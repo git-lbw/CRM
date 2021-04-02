@@ -1,2 +1,2 @@
 # CRM
-practice 
+This project is a novice practice project
