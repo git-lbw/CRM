@@ -18,7 +18,7 @@ import static com.crm.utils.Constant.*;
 
 @RestController
 @Slf4j
-@RequestMapping("/test")
+@RequestMapping("/lqm")
 public class StaffController {
     @Autowired
     private ReturnContent returnContent;
