@@ -11,4 +11,8 @@ spring:
 
 mybatis:
   mapper-locations: classpath:/mapper/*.xml
-  type-aliases-package: com.study.springcloud.entities
+  type-aliases-package: com.crm.entities
+  configuration:
+    call-setters-on-nulls: true
+    map-underscore-to-camel-case: true
+    default-statement-timeout: 10000
