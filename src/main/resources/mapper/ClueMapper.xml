@@ -1,0 +1,64 @@
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.crm.dao.yyl.ClueDao">
+    <!--查询所有-->
+    <select id="clue_select" resultType="java.util.Map">
+        SELECT * FROM clue cl LEFT JOIN staff st ON cl.staff_id=st.staff_id WHERE cl.cl_state!=0 ORDER BY cl.cl_time DESC
+    </select>
+
+    <!--查询线索名称-->
+    <select id="clue_name" resultType="java.util.Map">
+        SELECT * FROM clue cl LEFT JOIN staff st ON cl.staff_id=st.staff_id WHERE cl.cl_state!=0 and cl.cl_name LIKE'%${clName}%' ORDER BY cl.cl_time DESC
+    </select>
+
+    <!--查询线索公海所有-->
+    <select id="select_hight" resultType="java.util.Map">
+        SELECT * FROM clue cl LEFT JOIN staff st ON cl.staff_id=st.staff_id WHERE cl.cl_state=0 ORDER BY cl.cl_time DESC
+    </select>
+
+    <!--查询线索公海名称-->
+    <select id="clue_namehight" resultType="java.util.Map">
+        SELECT * FROM clue cl LEFT JOIN staff st ON cl.staff_id=st.staff_id WHERE cl.cl_state=0 and cl.cl_name LIKE'%${clNames}%' ORDER BY cl.cl_time DESC
+    </select>
+
+    <!--线索高级查询-->
+    <select id="clue_actCost" resultType="java.util.Map">
+        SELECT * FROM clue cl LEFT JOIN staff st ON cl.staff_id=st.staff_id
+        <where>
+            <if test="clTime!=null and clTime!='' or clTimes!=null and clTimes!=''">
+                and cl_time  between '${clTime}' and '${clTimes}'
+            </if>
+            <if test="clFollow!=null and clFollow!='' ">
+                and cl_follow='${clFollow}'
+            </if>
+            <if test="clSource!=null and clSource!=''">
+                and cl_source='${clSource}'
+            </if>
+            <if test="clHigh!=null and clHigh!='' ">
+                and cl_high='${clHigh}'
+            </if>
+            <if test="clState!=null and clState!='' ">
+                and cl_state='${clState}'
+            </if>
+            and cl.cl_state!=0
+        </where>
+        ORDER BY cl.cl_time DESC
+    </select>
+    
+    <!--新增线索-->
+    <insert id="clue_newly">
+        INSERT INTO clue VALUES(null,#{staffId},#{clName},#{clHigh},#{clFollow},#{clState},sysdate(),#{clPhone},#{clSex},#{clSite},#{clSource})
+    </insert>
+    <!--编辑线索-->
+    <update id="clue_compile">
+        UPDATE clue SET cl_name='${clName}',cl_high='${clHigh}',cl_follow='${clFollow}',cl_state=${clState},cl_phone='${clPhone}',cl_sex='${clSex}',cl_site='${clSite}',cl_source='${clSource}' WHERE cl_id=${clId}
+    </update>
+    <!--回归线索公海/删除-->
+    <update id="clue_regression">
+        UPDATE clue SET staff_id=null,cl_state=0 WHERE cl_id=${clId}
+    </update>
+    
+    <!--重新分配负责人-->
+    <update id="clue_allocation">
+        UPDATE clue SET staff_id=${staffId},cl_state=1 WHERE cl_id=${clId}
+    </update>
+</mapper>

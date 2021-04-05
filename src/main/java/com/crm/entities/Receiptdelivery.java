@@ -15,7 +15,7 @@ public class Receiptdelivery {
   private String launchmode;
   private Integer staffId;
   private java.sql.Date receiptdeliveryData;
-
+  private Integer inventoryactionId;
 
   public Integer getReceiptdeliveryId() {
     return receiptdeliveryId;
@@ -70,4 +70,11 @@ public class Receiptdelivery {
     this.receiptdeliveryData = receiptdeliveryData;
   }
 
+  public Integer getInventoryactionId() {
+    return inventoryactionId;
+  }
+
+  public void setInventoryactionId(Integer inventoryactionId) {
+    this.inventoryactionId = inventoryactionId;
+  }
 }

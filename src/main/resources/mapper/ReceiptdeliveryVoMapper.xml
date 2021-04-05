@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.crm.dao.thf.ReceiptdeliveryVoDao">
+    <resultMap id="ReceiptdeliveryVoMapper" type="com.crm.vo.thf.ReceiptdeliveryVo">
+        <id column="receiptdelivery_id" property="receiptdeliveryId"/>
+        <result column="receiptdelivery_name" property="receiptdeliveryName"/>
+        <result column="inventoryaction_name" property="inventoryactionName"/>
+        <result column="otalquantity" property="otalquantity"/>
+        <result column="launchmode" property="launchmode"/>
+        <result column="staff_name" property="staffName"/>
+        <result column="receiptdelivery_data" property="receiptdeliveryData"/>
+    </resultMap>
+    <!--查询所有出入库单信息-->
+    <select id="findAllReceiptdeliveryVo" resultMap="ReceiptdeliveryVoMapper">
+        select a.*,b.inventoryaction_name,c.staff_name from receiptdelivery a
+           LEFT JOIN inventoryaction b ON a.inventoryaction_id = b.inventoryaction_id
+           LEFT JOIN staff c ON a.staff_id = c.staff_id
+    </select>
+</mapper>

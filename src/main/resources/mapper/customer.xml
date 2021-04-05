@@ -1,0 +1,44 @@
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.crm.dao.yyl.CustomerDao">
+    <!--查询客户所有-->
+    <select id="customer_select" resultType="java.util.Map">
+        SELECT * FROM customer cu LEFT JOIN staff st ON cu.staff_id=st.staff_id WHERE cu.cu_make=0 ORDER BY cu.cu_time DESC
+    </select>
+    <!--查询客户名称-->
+    <select id="customer_name" resultType="java.util.Map">
+        SELECT * FROM customer cu LEFT JOIN staff st ON cu.staff_id=st.staff_id WHERE cu.cu_make=0 and cu.cu_name LIKE'%${cuName}%' ORDER BY cu.cu_time DESC
+    </select>
+
+    <!--查询客户公海所有-->
+    <select id="customer_selecthight" resultType="java.util.Map">
+        SELECT * FROM customer cu LEFT JOIN staff st ON cu.staff_id=st.staff_id WHERE cu.cu_make=1 ORDER BY cu.cu_time DESC
+    </select>
+
+    <!--查询客户公海名称-->
+    <select id="customer_hightname" resultType="java.util.Map">
+        SELECT * FROM customer cu LEFT JOIN staff st ON cu.staff_id=st.staff_id WHERE cu.cu_make=1 and cu.cu_name LIKE'%${cuNames}%' ORDER BY cu.cu_time DESC
+    </select>
+    
+    <!--客户高级查询-->
+    <select id="customer_advanced" resultType="java.util.Map">
+        SELECT * FROM customer cu LEFT JOIN staff st ON cu.staff_id=st.staff_id
+        <where>
+            <if test="cuTime!=null and cuTime!='' or cuTimes!=null and cuTimes!='' ">
+                and cu_time  between '${cuTime}' and '${cuTimes}'
+            </if>
+            <if test="cuState!=null and cuState!='' ">
+                and cu_state='${cuState}'
+            </if>
+            <if test="cuSource!=null and cuSource!='' ">
+                and cu_source='${cuSource}'
+            </if>
+            <if test="cuHigh!=null and cuHigh!='' ">
+                and cu_high='${cuHigh}'
+            </if>
+            <if test="cuRank!=null and cuRank!='' ">
+                and cu_rank='${cuRank}'
+            </if>
+        </where>
+    </select>
+
+</mapper>

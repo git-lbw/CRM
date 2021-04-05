@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.crm.dao.zh.OrdersDao">
+
+    <resultMap id="OrdersResultMap" type="com.crm.vo.zh.OrdersVo">
+        <id column="order_id" property="orderId" />
+        <result column="order_name" property="orderName" />
+        <result column="staff_id" property="staffId" />
+        <result column="staff_name" property="staffName" />
+        <result column="cu_id" property="cuId" />
+        <result column="cu_name" property="cuName" />
+        <result column="order_money" property="orderMoney" />
+        <result column="start_date" property="startDate" />
+        <result column="fixture_date" property="fixtureDate" />
+        <result column="sales_leads_id" property="salesLeadsId" />
+        <result column="chance_name" property="chanceName" />
+        <result column="contract_id" property="contractId" />
+        <result column="contract_name" property="contractName" />
+        <result column="order_state" property="orderState" />
+        <result column="create_time" property="createTime" />
+        <result column="update_time" property="updateTime" />
+        <result column="operator" property="operator" />
+        <result column="notes" property="notes" />
+    </resultMap>
+
+    <select id="getOrderAll" resultMap="OrdersResultMap">
+        select * from orders as od,staff as st,customer as cu where
+        od.staff_id=st.staff_id and od.cu_id=cu.cu_id
+    </select>
+
+    <select id="getOrderBySalesLeadsId" resultMap="OrdersResultMap">
+        select * from orders as od,staff as st,customer as cu where
+        od.staff_id=st.staff_id and od.cu_id=cu.cu_id and od.sales_leads_id=#{salesLeadsId}
+    </select>
+</mapper>

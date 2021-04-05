@@ -2,6 +2,8 @@ package com.crm.entities;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.format.annotation.DateTimeFormat;
+
 import java.sql.Timestamp;
 
 @Data
@@ -14,7 +16,8 @@ public class Quotation {
   private Integer salesLeadsId;
   private double quoteMoney;
   private String quoteStage;
-  private java.sql.Date quoteDate;
+  @DateTimeFormat(pattern = "yyyy-MM-dd")
+  private java.util.Date quoteDate;
   private Timestamp createTime;
   private Timestamp updateTime;
   private String operator;
@@ -66,11 +69,11 @@ public class Quotation {
   }
 
 
-  public java.sql.Date getQuoteDate() {
+  public java.util.Date getQuoteDate() {
     return quoteDate;
   }
 
-  public void setQuoteDate(java.sql.Date quoteDate) {
+  public void setQuoteDate(java.util.Date quoteDate) {
     this.quoteDate = quoteDate;
   }
 

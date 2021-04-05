@@ -14,8 +14,8 @@ public class Orders {
   private Integer staffId;
   private Integer cuId;
   private double orderMoney;
-  private java.sql.Date startDate;
-  private java.sql.Date fixtureDate;
+  private java.util.Date startDate;
+  private java.util.Date fixtureDate;
   private Integer salesLeadsId;
   private Integer contractId;
   private String orderState;
@@ -70,20 +70,20 @@ public class Orders {
   }
 
 
-  public java.sql.Date getStartDate() {
+  public java.util.Date getStartDate() {
     return startDate;
   }
 
-  public void setStartDate(java.sql.Date startDate) {
+  public void setStartDate(java.util.Date startDate) {
     this.startDate = startDate;
   }
 
 
-  public java.sql.Date getFixtureDate() {
+  public java.util.Date getFixtureDate() {
     return fixtureDate;
   }
 
-  public void setFixtureDate(java.sql.Date fixtureDate) {
+  public void setFixtureDate(java.util.Date fixtureDate) {
     this.fixtureDate = fixtureDate;
   }
 

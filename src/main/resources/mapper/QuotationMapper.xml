@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.crm.dao.zh.QuotationDao">
+
+    <resultMap id="QuotationsResultMap" type="com.crm.vo.zh.QuotationVo">
+        <id column="quotation_id" property="quotationId" />
+        <result column="sales_leads_id" property="salesLeadsId" />
+        <result column="chance_name" property="chanceName" />
+        <result column="quotation_name" property="quotationName" />
+        <result column="quote_money" property="quoteMoney" />
+        <result column="quote_stage" property="quoteStage" />
+        <result column="quote_date" property="quoteDate" />
+        <result column="create_time" property="createTime" />
+        <result column="update_time" property="updateTime" />
+        <result column="operator" property="operator" />
+        <result column="notes" property="notes" />
+        <result column="staff_id" property="staffId" />
+        <result column="staff_name" property="staffName" />
+        <result column="cu_id" property="cuId" />
+        <result column="cu_name" property="cuName" />
+    </resultMap>
+
+    <select id="getQuotationBySalesLeadsId" parameterType="int" resultMap="QuotationsResultMap">
+        select * from quotation as qu, sales_leads as sa,staff as st,customer as cu
+        where qu.sales_leads_id=sa.sales_leads_id and sa.staff_id=st.staff_id and sa.cu_id=cu.cu_id and
+        qu.sales_leads_id=#{salesLeadsId}
+    </select>
+
+    <select id="getQuotationAll" resultMap="QuotationsResultMap">
+        select * from quotation as qu, sales_leads as sa,staff as st,customer as cu
+        where qu.sales_leads_id=sa.sales_leads_id and sa.staff_id=st.staff_id and sa.cu_id=cu.cu_id
+    </select>
+
+    <insert id="addQuotation" parameterType="com.crm.entities.Quotation">
+        Insert into quotation (quotation_name,sales_leads_id,quote_money,quote_stage,quote_date,
+        create_time,update_time,operator,notes) values (#{quotationName},#{salesLeadsId},#{quoteMoney},
+        #{quoteStage},#{quoteDate},#{createTime},#{createTime},#{operator},#{notes})
+    </insert>
+
+    <update id="updateQuotation" parameterType="com.crm.entities.Quotation">
+        update quotation set quotation_name=#{quotationName},quote_money=#{quoteMoney},quote_date=#{quoteDate},
+        update_time=#{updateTime},operator=#{operator},notes=#{notes} where quotation_id=#{quotationId}
+    </update>
+</mapper>

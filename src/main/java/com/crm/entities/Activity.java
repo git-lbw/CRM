@@ -1,4 +1,5 @@
 package com.crm.entities;
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -12,7 +13,9 @@ public class Activity {
   private Integer acId;
   private Integer staffId;
   private String acName;
+  @JsonFormat(shape =JsonFormat. Shape.STRING,pattern="yyyy-MM-dd")
   private java.sql.Date acStarttime;
+  @JsonFormat(shape =JsonFormat. Shape.STRING,pattern="yyyy-MM-dd")
   private java.sql.Date acEndtime;
   private String acSite;
   private String acType;
@@ -48,6 +51,7 @@ public class Activity {
   public void setAcName(String acName) {
     this.acName = acName;
   }
+
 
 
   public java.sql.Date getAcStarttime() {
