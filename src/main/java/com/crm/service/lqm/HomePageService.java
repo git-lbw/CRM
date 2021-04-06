@@ -8,4 +8,6 @@ import java.util.List;
 @Service
 public interface HomePageService {
     public List<Customer> NewCustomerData();
+
+
 }

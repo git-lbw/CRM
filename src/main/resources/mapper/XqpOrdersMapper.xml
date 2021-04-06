@@ -10,7 +10,7 @@
             select DISTINCT year(fixture_date) from orders
         </select>
 
-    <select id="getyear" resultType="java.lang.String">
+        <select id="getyear" resultType="java.lang.String">
            select DISTINCT year(re_date) from record
         </select>
 
