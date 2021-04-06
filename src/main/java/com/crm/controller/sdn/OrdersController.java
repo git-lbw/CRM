@@ -11,6 +11,7 @@ import com.github.pagehelper.PageHelper;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.HashMap;
@@ -43,5 +44,10 @@ public class OrdersController {
         return returnContent.getContent(map,"查询成功！","查询失败");
     }
 
+    //合同状态视图
+    @GetMapping("/findContractState")
+    public List<OrdersVo> findContractView(@RequestParam("pieValue") String pieValue){
+        return ordersService.findContractView(pieValue);
+    }
 
 }

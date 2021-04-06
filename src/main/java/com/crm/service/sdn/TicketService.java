@@ -17,17 +17,17 @@ public class TicketService {
     TicketDao ticketDao;
 
     //查询开票
-    public List<TicketVo> findAllTicket(Integer kId){
+    public List<TicketVo> findAllTicket(String kId){
         return ticketDao.findAllTicket(kId);
     }
 
     //查询开票记录
-    public List<TicketVo> findTicketJL(Integer kId){
+    public List<TicketVo> findTicketJL(String kId){
         return ticketDao.findTicketJL(kId);
     }
 
     //开票办理 修改票据状态
-    public void updateKState(Integer kId){
+    public void updateKState(String kId){
         ticketDao.updateKState(kId);
     };
 

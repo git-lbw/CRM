@@ -20,7 +20,7 @@ public class RecordVo {
     private double reBeenm;
     private double reMoney;
     private Integer rePeriods;
-    private java.sql.Date reDate;
+    private Timestamp reDate;
     private String staffName;
     private String staffAccount;
     private String staffPassword;
@@ -115,12 +115,12 @@ public class RecordVo {
         this.rePeriods = rePeriods;
     }
 
-    public Date getReDate() {
+    public Timestamp getReDate() {
         return reDate;
     }
-    @DateTimeFormat(pattern = "yyyy-MM-dd")
-    @JsonFormat(pattern = "yyyy-MM-dd", timezone = "GMT+8")
-    public void setReDate(Date reDate) {
+   /* @DateTimeFormat(pattern = "yyyy-MM-dd")
+    @JsonFormat(pattern = "yyyy-MM-dd", timezone = "GMT+8")*/
+    public void setReDate(Timestamp reDate) {
         this.reDate = reDate;
     }
 

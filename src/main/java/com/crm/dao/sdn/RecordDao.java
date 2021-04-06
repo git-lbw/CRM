@@ -30,6 +30,6 @@ public interface RecordDao {
     void updateReturnState(Integer rId);
 
     //新增开票
-/*    void saveKaiPiao(TicketVo ticketVo);*/
+    void saveKaiPiao(TicketVo ticketVo);
 
 }

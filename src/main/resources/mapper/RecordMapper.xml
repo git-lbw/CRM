@@ -39,7 +39,7 @@
 
     <!--新增开票-->
     <insert id="saveKaiPiao">
-        insert into ticket values(#{kId},#{reId},#{kMoney},#{kDate},#{staffName},#{cuId},#{kSate})
+        insert into ticket values(#{kId},#{staffId},#{reId},#{kMoney},#{kDate},#{kState},#{cuId})
     </insert>
 
 

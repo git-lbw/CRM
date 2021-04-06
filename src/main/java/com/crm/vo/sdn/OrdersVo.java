@@ -27,7 +27,7 @@ public class OrdersVo {
     private Timestamp updateTime;
     private String operator;
     private String notes;
-
+    private String orderName;
     private String cuName;
     private String cuHigh;
     private String cuRank;
@@ -40,6 +40,33 @@ public class OrdersVo {
     private String staffAccount;
     private String staffPassword;
     private String staffPhone;
+
+    private String number;
+    private String type;
+
+    public String getNumber() {
+        return number;
+    }
+
+    public void setNumber(String number) {
+        this.number = number;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
+
+    public String getOrderName() {
+        return orderName;
+    }
+
+    public void setOrderName(String orderName) {
+        this.orderName = orderName;
+    }
 
     public Integer getContractId() {
         return contractId;

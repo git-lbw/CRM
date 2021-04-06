@@ -9,6 +9,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.sql.Time;
+import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
@@ -59,9 +61,10 @@ public class RecordService {
         }
 
         //新增开票
-/*        String str2="KP"+sdf.format(date);
-        TicketVo kaipiao=new TicketVo(str2,str,recordVo.getReMoney(),new Date(),recordVo.getStaffId(),recordVo.getCuId(),0);
-        recordDao.saveKaiPiao(kaipiao);*/
+        String str2="KP"+sdf.format(date);
+
+        TicketVo kaipiao=new TicketVo(str2,recordVo.getStaffId(),recordVo.getReId(),recordVo.getReDate(),0,recordVo.getReBeenm(),recordVo.getCuId());
+        recordDao.saveKaiPiao(kaipiao);
 
     }
 }

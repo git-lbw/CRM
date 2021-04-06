@@ -22,7 +22,7 @@ public class ReturnsVo {
     private Integer rBeenp;
     private double rMaym;
     private double rBeenm;
-    private java.sql.Date rDate;
+    private Timestamp rDate;
     private Integer rState;
     private String contractName;
     private double contractMoney;
@@ -110,13 +110,12 @@ public class ReturnsVo {
     public void setrBeenm(double rBeenm) {
         this.rBeenm = rBeenm;
     }
-    @DateTimeFormat(pattern = "yyyy-MM-dd")
-    @JsonFormat(pattern = "yyyy-MM-dd", timezone = "GMT+8")
-    public Date getrDate() {
+
+    public Timestamp getrDate() {
         return rDate;
     }
 
-    public void setrDate(Date rDate) {
+    public void setrDate(Timestamp rDate) {
         this.rDate = rDate;
     }
 

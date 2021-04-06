@@ -13,4 +13,7 @@ import java.util.List;
 public interface SdnOrdersDao {
     //查询订单信息
     public List<OrdersVo> findAllOrders(OrdersVo ordersVo);
+
+    //合同状态视图
+    public List<OrdersVo> findContractView();
 }
