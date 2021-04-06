@@ -45,11 +45,31 @@ public class ImpOrderssService implements OrderssService {
     }
 
     public List<Map<String,Long>> xss(String year) {
-        return ordessDao.dds(year);
+        return ordessDao.xss(year);
     }
 
     public List<Map<String,Long>> top10(String year) {
         return ordessDao.top10(year);
     }
+
+    public List<Map<String,Long>> hts(String year) {
+        return ordessDao.hts(year);
+    }
+
+    public List<Map<String,Long>> cp(String year) {
+        return ordessDao.cp(year);
+    }
+
+    public List<Map<String,Long>> xsld(String year) {
+        return ordessDao.xsld(year);
+    }
+
+//    public List<Orders> orderall(String year){
+//        return ordessDao.orderall(year);
+//    }
+
+   public List<String> getkhyear(){
+        return ordessDao.getkhyear();
+   };
 
 }

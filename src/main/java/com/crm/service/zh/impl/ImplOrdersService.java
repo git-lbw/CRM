@@ -22,4 +22,8 @@ public class ImplOrdersService implements OrdersService {
     public List<OrdersVo> getOrderBySalesLeadsId(Integer salesLeadsId) {
         return ordersDao.getOrderBySalesLeadsId(salesLeadsId);
     }
+
+    public List<OrdersVo> orderssall(String year) {
+        return ordersDao.orderssall(year);
+    }
 }

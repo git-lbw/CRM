@@ -18,6 +18,11 @@ public interface OrderssService {
      List<Map<String,Long>> dds(String year);
      List<Map<String,Long>> xss(String year);
      List<Map<String,Long>> top10(String year);
+     List<Map<String,Long>> hts(String year);
+     List<Map<String,Long>> cp(String year);
+     List<Map<String,Long>> xsld(String year);
+     List<String> getkhyear();
+   //  List<Orders> orderall(String year);
 }
 
 
