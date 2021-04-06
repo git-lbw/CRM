@@ -18,13 +18,13 @@ public class ReturnsService {
     ReturnsDao returnsDao;
 
     //查询回款计划
-    public List<ReturnsVo> findAllReturns(String contractName){
+ /*   public List<ReturnsVo> findAllReturns(String contractName){
         return returnsDao.findAllReturns(contractName);
-    }
-
-/*    public List<ReturnsVo> findAllReturns(ReturnsVo returnsVo){
-        return returnsDao.findAllReturns(returnsVo);
     }*/
+
+    public List<ReturnsVo> findAllReturns(ReturnsVo returnsVo){
+        return returnsDao.findAllReturns(returnsVo);
+    }
 
 /*
     //删除回款计划

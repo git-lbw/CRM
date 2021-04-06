@@ -1,6 +1,7 @@
 package com.crm.dao.sdn;
 
 import com.crm.vo.sdn.RecordVo;
+import com.crm.vo.sdn.TicketVo;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
@@ -27,5 +28,8 @@ public interface RecordDao {
 
     //修改回款状态
     void updateReturnState(Integer rId);
+
+    //新增开票
+/*    void saveKaiPiao(TicketVo ticketVo);*/
 
 }

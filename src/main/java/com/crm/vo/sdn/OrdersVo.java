@@ -18,8 +18,8 @@ public class OrdersVo {
     private Integer staffId;
     private Integer cuId;
     private double contractMoney;
-    private Date startDate;
-    private Date endDate;
+    private java.sql.Date startDate;
+    private java.sql.Date endDate;
     private Integer returnedNumber;
     private Integer billingState;
     private String contractState;
@@ -33,7 +33,7 @@ public class OrdersVo {
     private String cuRank;
     private String cuState;
     private Integer cuMake;
-    private Date cuTime;
+    private java.sql.Date cuTime;
     private String cuSource;
 
     private String staffName;

@@ -20,7 +20,7 @@ public class RecordVo {
     private double reBeenm;
     private double reMoney;
     private Integer rePeriods;
-    private Date reDate;
+    private java.sql.Date reDate;
     private String staffName;
     private String staffAccount;
     private String staffPassword;
@@ -30,13 +30,13 @@ public class RecordVo {
     private Integer rBeenp;
     private double rMaym;
     private double rBeenm;
-    private Date rDate;
+    private java.sql.Date rDate;
     private Integer rState;
 
     private String contractName;
     private double contractMoney;
-    private Date startDate;
-    private Date endDate;
+    private java.sql.Date startDate;
+    private java.sql.Date endDate;
     private Integer returnedNumber;
     private Integer billingState;
     private String contractState;
@@ -51,8 +51,13 @@ public class RecordVo {
     private String cuRank;
     private String cuState;
     private Integer cuMake;
-    private Date cuTime;
+    private java.sql.Date cuTime;
     private String cuSource;
+
+    private Integer kId;
+    private double kMoney;
+    private java.sql.Date kDate;
+    private Integer kState;
 
     public String getReId() {
         return reId;
@@ -350,4 +355,49 @@ public class RecordVo {
     public void setCuSource(String cuSource) {
         this.cuSource = cuSource;
     }
+
+    public Integer getkId() {
+        return kId;
+    }
+
+    public void setkId(Integer kId) {
+        this.kId = kId;
+    }
+
+    public double getkMoney() {
+        return kMoney;
+    }
+
+    public void setkMoney(double kMoney) {
+        this.kMoney = kMoney;
+    }
+
+    public Date getkDate() {
+        return kDate;
+    }
+
+    public void setkDate(Date kDate) {
+        this.kDate = kDate;
+    }
+
+    public Integer getkState() {
+        return kState;
+    }
+
+    public void setkState(Integer kState) {
+        this.kState = kState;
+    }
+
+/*    public RecordVo(String reId, Integer staffId, Integer rId, double reMoney, Integer kId, Date kDate, Integer kState) {
+        this.reId = reId;
+        this.staffId = staffId;
+        this.rId = rId;
+        this.reMoney = reMoney;
+        this.kId = kId;
+        this.kDate = kDate;
+        this.kState = kState;
+    }
+
+    public RecordVo() {
+    }*/
 }

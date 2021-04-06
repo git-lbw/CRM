@@ -16,7 +16,7 @@ public class TicketVo {
     private Integer staffId;
     private String reId;
     private double kMoney;
-    private Date kDate;
+    private java.sql.Date kDate;
     private String staffName;
     private Integer kState;
 
@@ -30,7 +30,7 @@ public class TicketVo {
     private double reBeenm;
     private double reMoney;
     private Integer rePeriods;
-    private Date reDate;
+    private java.sql.Date reDate;
 
     private Integer cuId;
     private String cuName;
@@ -38,7 +38,7 @@ public class TicketVo {
     private String cuRank;
     private String cuState;
     private Integer cuMake;
-    private Date cuTime;
+    private java.sql.Date cuTime;
     private String cuSource;
 
     public Integer getkId() {

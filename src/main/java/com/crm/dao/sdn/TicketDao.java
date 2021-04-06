@@ -19,5 +19,5 @@ public interface TicketDao {
     List<TicketVo> findTicketJL(Integer kId);
 
     //办理开票，修改票据状态
-   /* void updateKState(TicketVo ticketVo);*/
+    void updateKState(Integer kId);
 }

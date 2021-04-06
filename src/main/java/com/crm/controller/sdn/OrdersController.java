@@ -1,5 +1,7 @@
 package com.crm.controller.sdn;
 
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONObject;
 import com.crm.service.sdn.OrdersService;
 import com.crm.utils.RestContent;
 import com.crm.utils.ReturnContent;
@@ -27,12 +29,15 @@ public class OrdersController {
     @Autowired
     OrdersService ordersService;
 
+
+
     //查询所有订单
     @GetMapping("/findAllOrdersk")
-    public RestContent findAllOrders(Integer pageNum, Integer size, String contractName){
+    public RestContent findAllOrders(Integer pageNum, Integer size, String search){
+        OrdersVo ordersVo= JSONObject.toJavaObject(JSON.parseObject(search),OrdersVo.class);
         Map<String,Object> map=new HashMap<String, Object>();
         Page<Object> page=PageHelper.startPage(pageNum,size);
-        List<OrdersVo> order=ordersService.findAllOrders(contractName);
+        List<OrdersVo> order=ordersService.findAllOrders(ordersVo);
         map.put("rows",order);
         map.put("total",page.getTotal());
         return returnContent.getContent(map,"查询成功！","查询失败");

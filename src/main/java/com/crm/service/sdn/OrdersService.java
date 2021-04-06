@@ -1,5 +1,6 @@
 package com.crm.service.sdn;
 
+
 import com.crm.dao.sdn.SdnOrdersDao;
 import com.crm.vo.sdn.OrdersVo;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,10 +15,13 @@ import java.util.List;
 @Transactional
 public class OrdersService {
     @Autowired
-    SdnOrdersDao sdnOrdersDao;
+    SdnOrdersDao ordersDao;
 
     //查询所有订单
-    public List<OrdersVo> findAllOrders(String contractName){
-        return sdnOrdersDao.findAllOrders(contractName);
+    public List<OrdersVo> findAllOrders(OrdersVo ordersVo){
+        return ordersDao.findAllOrders(ordersVo);
     }
+
+
+
 }

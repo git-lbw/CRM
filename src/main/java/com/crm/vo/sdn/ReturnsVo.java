@@ -22,12 +22,12 @@ public class ReturnsVo {
     private Integer rBeenp;
     private double rMaym;
     private double rBeenm;
-    private Date rDate;
+    private java.sql.Date rDate;
     private Integer rState;
     private String contractName;
     private double contractMoney;
-    private Date startDate;
-    private Date endDate;
+    private java.sql.Date startDate;
+    private java.sql.Date endDate;
     private Integer returnedNumber;
     private Integer billingState;
     private String contractState;
@@ -44,7 +44,7 @@ public class ReturnsVo {
     private String cuRank;
     private String cuState;
     private Integer cuMake;
-    private Date cuTime;
+    private java.sql.Date cuTime;
     private String cuSource;
 
     public Integer getrId() {

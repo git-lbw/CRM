@@ -1,5 +1,7 @@
 package com.crm.controller.sdn;
 
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONObject;
 import com.crm.entities.CommonResult;
 import com.crm.service.sdn.ReturnsService;
 import com.crm.utils.RestContent;
@@ -27,7 +29,7 @@ public class ReturnsController {
     ReturnsService returnsService;
 
     //查询回款计划
-    @GetMapping("/findAllReturns")
+/*    @GetMapping("/findAllReturns")
     public RestContent findAllReturns(Integer pageNum,Integer size,String contractName){
         Map<String,Object> map = new HashMap<String, Object>();
         Page<Object> page = PageHelper.startPage(pageNum,size);
@@ -35,10 +37,10 @@ public class ReturnsController {
         map.put("rows",returns);
         map.put("total",page.getTotal());
         return returnContent.getContent(map,"查询成功！","查询失败！");
-    }
+    }*/
 
 
-/*    @GetMapping("/findAllReturns")
+    @GetMapping("/findAllReturns")
     public RestContent findAllReturns(Integer pageNum,Integer size,String search){
         ReturnsVo returnsVo= JSONObject.toJavaObject(JSON.parseObject(search),ReturnsVo.class);
         Map<String,Object> map = new HashMap<String, Object>();
@@ -47,7 +49,9 @@ public class ReturnsController {
         map.put("rows",returns);
         map.put("total",page.getTotal());
         return returnContent.getContent(map,"查询成功！","查询失败！");
-    }*/
+    }
+
+
 /*
     //批量删除
     @RequestMapping("/deleAllreturns")

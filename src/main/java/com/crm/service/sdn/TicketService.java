@@ -27,8 +27,8 @@ public class TicketService {
     }
 
     //开票办理 修改票据状态
-/*    public void updateKState(TicketVo ticketVo){
-        ticketDao.updateKState(ticketVo);
-    };*/
+    public void updateKState(Integer kId){
+        ticketDao.updateKState(kId);
+    };
 
 }

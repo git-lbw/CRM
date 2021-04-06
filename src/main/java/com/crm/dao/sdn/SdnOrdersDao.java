@@ -12,5 +12,5 @@ import java.util.List;
 @Repository
 public interface SdnOrdersDao {
     //查询订单信息
-    public List<OrdersVo> findAllOrders(String contractName);
+    public List<OrdersVo> findAllOrders(OrdersVo ordersVo);
 }

@@ -11,33 +11,33 @@
     </resultMap>
 
     <!--查询计划-->
+    <!--    <select id="findAllReturns" resultType="com.crm.vo.sdn.ReturnsVo">
+             select * from returns r left join contract c on c.contract_id=r.contract_id
+             left join staff s on s.staff_id=c.staff_id
+             left join customer cu on cu.cu_id=c.cu_id where c.contract_name like '%${contractName}%'
+             order by r_date desc
+        </select>-->
+
     <select id="findAllReturns" resultType="com.crm.vo.sdn.ReturnsVo">
-         select * from returns r left join contract c on c.contract_id=r.contract_id
-         left join staff s on s.staff_id=c.staff_id
-         left join customer cu on cu.cu_id=c.cu_id where c.contract_name like '%${contractName}%'
-         order by r_date desc
+        select * from returns r left join contract c on c.contract_id=r.contract_id
+        left join staff s on s.staff_id=c.staff_id
+        left join customer cu on cu.cu_id=c.cu_id
+        <where>
+            <if test="contractName!=null and contractName!=''">
+                c.contract_name like '%${contractName}%'
+            </if>
+            <if test="rState !=null">
+                and r.r_state=#{rState}
+            </if>
+        </where>
+        order by r_date desc
     </select>
 
-  <!--  <select id="findAllReturns" resultType="com.crm.vo.sdn.ReturnsVo">
-         select * from returns r left join contract c on c.contract_id=r.contract_id
-         left join staff s on s.staff_id=c.staff_id
-         left join customer cu on cu.cu_id=c.cu_id
-         <where>
-         <if test="contractName!=null and contractName!=''">
-             and c.contract_name like '%${contractName}%'
-         </if>
-         <if test="rState!=null and rState!=''">
-             and r.r_state=#{rState}
-         </if>
-         </where>
-         order by r_date desc
-    </select>
--->
 
     <!--删除计划-->
-<!--    <delete id="deleReturns">
-        delete from returns where r_id=#{rId}
-    </delete>-->
+    <!--    <delete id="deleReturns">
+            delete from returns where r_id=#{rId}
+        </delete>-->
 
 
 </mapper>

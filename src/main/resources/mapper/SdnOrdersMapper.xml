@@ -21,7 +21,21 @@
     left join returns rt on rt.r_id=re.r_id left join customer cu on cu.cu_id=rt.cu_id left join staff st on st.staff_id=cu.staff_id
     where o.order_name like '%${orderName}%' order by order_id desc*/
 
-    select * from contract co left join customer cu on co.cu_id=cu.cu_id left join staff st on st.staff_id=cu.staff_id where co.contract_name like
-    '%${contractName}%' order by create_time desc
+   /* select * from contract co left join customer cu on co.cu_id=cu.cu_id left join staff st on st.staff_id=cu.staff_id where co.contract_name like
+    '%${contractName}%' order by create_time desc*/
+
+        select * from contract co left join customer cu on co.cu_id=cu.cu_id left join staff st on st.staff_id=cu.staff_id
+        <where>
+            <if test="contractName!=null and contractName!=''">
+                co.contract_name like '%${contractName}%'
+            </if>
+            <if test="contractState !=null and contractState!='' ">
+                co.contract_state=#{contractState}
+            </if>
+        </where>
+
     </select>
+
+
+
 </mapper>
