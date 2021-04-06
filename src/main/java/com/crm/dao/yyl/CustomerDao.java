@@ -1,5 +1,6 @@
 package com.crm.dao.yyl;
 
+import com.crm.entities.Customer;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
@@ -25,4 +26,17 @@ public interface CustomerDao {
                                                       @Param("cuSource") String cuSource,
                                                       @Param("cuHigh") String cuHigh,
                                                       @Param("cuRank") String cuRank);
+
+    //新增客户
+    public void cutomer_insert(Customer customer);
+
+    //编辑客户
+    public void cutomer_update(Customer customer);
+
+    //客户归回客户公海
+    public void cutomer_flyback(@Param("cuId") Integer cuId);
+
+    //重新分配负责人
+    public void cutomer_allocation(@Param("staffId") Integer staffId,
+                                   @Param("cuId") Integer cuId);
 }
