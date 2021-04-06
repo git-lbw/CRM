@@ -28,4 +28,9 @@ public class ImplOrdersService implements OrdersService {
     public Orders getOrderByOrderId(Integer orderId) {
         return ordersDao.getOrderByOrderId(orderId);
     }
+
+    @Override
+    public Boolean updateOrder(Orders orders) {
+        return ordersDao.updateOrder(orders);
+    }
 }

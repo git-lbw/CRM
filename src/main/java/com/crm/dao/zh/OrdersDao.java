@@ -16,4 +16,6 @@ public interface OrdersDao {
     //根据销售订单id查询
     @Select("select * from orders as od,staff as st,customer as cu where od.staff_id=st.staff_id and od.cu_id=cu.cu_id and od.order_id=#{orderId}")
     public Orders getOrderByOrderId(Integer orderId);
+    //修改订单
+    public Boolean updateOrder(Orders orders);
 }

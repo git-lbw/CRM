@@ -22,11 +22,11 @@
     </resultMap>
 
     <select id="getContractAll" resultMap="ContractResultMap">
-        select * from contract as ct,staff as st,customer as cu where
-        ct.staff_id=st.staff_id and ct.cu_id=cu.cu_id
+        select * from contract as ct left join staff as st on ct.staff_id=st.staff_id
+        left join customer as cu on ct.cu_id=cu.cu_id
     </select>
 
-    <insert id="addContract" parameterType="com.crm.vo.zh.ContractVo">
+    <insert id="addContract" parameterType="com.crm.vo.zh.ContractVo" useGeneratedKeys="true" keyProperty="contractId">
         Insert into contract(contract_name,cu_id,staff_id,contract_money,start_date,end_date,
         returned_number,billing_state,contract_state,create_time,update_time,operator,notes) values
         (#{contractName},#{cuId},#{staffId},#{contractMoney},#{startDate},#{endDate},#{returnedNumber},
