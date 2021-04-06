@@ -14,6 +14,10 @@ import java.util.Map;
 public class CustomerService {
     @Autowired
     CustomerDao customerDao;
+    //查询客户和客户公海
+    public List<Map<String,Object>> customer_all(){
+        return customerDao.customer_all();
+    }
     //查询所有
     public List<Map<String,Object>> customer_select(){
         return customerDao.customer_select();

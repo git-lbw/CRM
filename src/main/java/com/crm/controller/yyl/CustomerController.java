@@ -19,6 +19,11 @@ public class CustomerController {
     PrincipallService pr;
     @Autowired
     private ReturnContent returnContent;
+    //查询客户和客户公海
+    @RequestMapping("/customer_all")
+    public RestContent customer_all(){
+        return returnContent.getContent(customerService.customer_all(),"数据获取成功","数据获取失败");
+    }
     //查询客户所有
     @RequestMapping("/Customer_select")
     public RestContent customer_select(){

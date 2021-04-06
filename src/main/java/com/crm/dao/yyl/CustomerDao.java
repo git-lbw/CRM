@@ -11,6 +11,8 @@ import java.util.Map;
 @Mapper
 @Repository
 public interface CustomerDao {
+    //查询客户和客户公海
+    public List<Map<String,Object>> customer_all();
     //查询客户所有
     public List<Map<String,Object>> customer_select();
     //查询客户名称

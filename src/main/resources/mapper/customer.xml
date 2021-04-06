@@ -1,5 +1,9 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.crm.dao.yyl.CustomerDao">
+    <!--查询客户和客户公海-->
+    <select id="customer_all" resultType="java.util.Map">
+        SELECT * FROM customer cu LEFT JOIN staff st ON cu.staff_id=st.staff_id ORDER BY cu.cu_time DESC
+    </select>
     <!--查询客户所有-->
     <select id="customer_select" resultType="java.util.Map">
         SELECT * FROM customer cu LEFT JOIN staff st ON cu.staff_id=st.staff_id WHERE cu.cu_make=0 ORDER BY cu.cu_time DESC
@@ -38,6 +42,7 @@
             <if test="cuRank!=null and cuRank!='' ">
                 and cu_rank='${cuRank}'
             </if>
+
         </where>
     </select>
 
