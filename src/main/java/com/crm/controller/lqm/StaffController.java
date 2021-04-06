@@ -7,11 +7,9 @@ import com.crm.utils.Constant;
 import com.crm.utils.RestContent;
 import com.crm.utils.ReturnContent;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -46,5 +44,15 @@ public class StaffController {
     public RestContent getAllStaff(){
         List<Staff> staffList = staffService.getAllStaff();
         return returnContent.getContent(staffList,"获取所有员工成功","获取所有员工失败");
+    }
+
+    @PostMapping("/login/{username}/{password}")
+    public RestContent Stafflogin(@PathVariable("username") String account, @PathVariable("password") String password){
+        Staff staff = staffService.staffLogin(account, password);
+        if (staff!=null){
+            return returnContent.getContent(1,"登录成功","登录失败");
+        }else {
+            return returnContent.getContent(null,"登录成功","登录失败，账号或密码错误");
+        }
     }
 }

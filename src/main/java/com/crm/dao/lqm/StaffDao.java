@@ -24,4 +24,13 @@ public interface StaffDao {
      */
     @Select("select * from staff")
     public List<Staff> getAllStaff();
+
+    /**
+     * 员工登录
+     * @param account
+     * @param password
+     * @return
+     */
+    @Select("select * from staff where staff_account=#{account} and staff_password=#{password}")
+    public Staff staffLogin(@Param("account") String account, @Param("password") String password);
 }

@@ -10,6 +10,7 @@ import java.sql.Timestamp;
 public class Linkman {
 
   private Integer liId;
+  private String liName;
   private Integer staffId;
   private String cuId;
   private String liPhone;
@@ -17,6 +18,7 @@ public class Linkman {
   private String liDepartment;
   private String liPost;
   private String liSite;
+  private java.util.Date liTime;
 
 
   public Integer getLiId() {
@@ -25,6 +27,15 @@ public class Linkman {
 
   public void setLiId(Integer liId) {
     this.liId = liId;
+  }
+
+
+  public String getLiName() {
+    return liName;
+  }
+
+  public void setLiName(String liName) {
+    this.liName = liName;
   }
 
 
@@ -88,6 +99,15 @@ public class Linkman {
 
   public void setLiSite(String liSite) {
     this.liSite = liSite;
+  }
+
+
+  public java.util.Date getLiTime() {
+    return liTime;
+  }
+
+  public void setLiTime(java.util.Date liTime) {
+    this.liTime = liTime;
   }
 
 }
