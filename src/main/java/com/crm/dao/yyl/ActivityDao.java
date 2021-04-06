@@ -19,7 +19,8 @@ public interface ActivityDao {
     public List<Map<String,Object>> actCost(@Param("acStarttime") String acStarttime,
                                             @Param("acStarttimes") String acStarttimes,
                                             @Param("acType") String acType,
-                                            @Param("acState") Integer acState);
+                                            @Param("acState") Integer acState,
+                                            @Param("acName") String acName);
     //新增
     public void add(Activity activity);
 

@@ -1,22 +1,5 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.crm.dao.yyl.ActivityDao">
-
-    <resultMap id="StaffMap" type="com.crm.entities.Activity">
-        <id column="ac_id" property="acId" />
-        <result column="staff_id" property="staffId" />
-        <result column="ac_name" property="acName" />
-        <result column="ac_starttime" property="acStarttime" />
-        <result column="ac_endtime" property="acEndtime" />
-        <result column="ac_site" property="acSite" />
-        <result column="ac_type" property="acType" />
-        <result column="ac_state" property="acState" />
-        <result column="ac_planned" property="acPlanned" />
-        <result column="ac_actualcost" property="acActualcost" />
-        <result column="ac_income" property="acIncome" />
-        <result column="ac_reality" property="acReality" />
-
-    </resultMap>
-
     <!--查询所有-->
     <select id="select" resultType="java.util.Map">
         SELECT * FROM activity ac  LEFT JOIN staff st ON ac.staff_id=st.staff_id WHERE ac.ac_state!=0 ORDER BY ac.ac_starttime DESC
@@ -37,6 +20,9 @@
             </if>
             <if test="acState !=null and acState !='' ">
                 and ac_state='${acState}'
+            </if>
+            <if test="acName!=null and acName!='' ">
+                and ac_name LIKE'%${acName}%'
             </if>
             and  ac.ac_state!=0
         </where>

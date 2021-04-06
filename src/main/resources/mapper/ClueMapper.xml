@@ -39,6 +39,9 @@
             <if test="clState!=null and clState!='' ">
                 and cl_state='${clState}'
             </if>
+            <if test="clName!=null and clName!='' ">
+                and cl_name like '%${clName}%'
+            </if>
             and cl.cl_state!=0
         </where>
         ORDER BY cl.cl_time DESC

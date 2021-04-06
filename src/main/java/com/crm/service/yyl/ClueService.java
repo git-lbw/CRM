@@ -31,8 +31,9 @@ public class ClueService {
         return clueDao.clue_namehight(clNames);
     }
     //线索高级查询
-   public List<Map<String,Object>> clue_actCost(String clTime,String clTimes,String clFollow,String clSource,String clHigh,Integer clState){
-       return clueDao.clue_actCost(clTime, clTimes, clFollow, clSource, clHigh, clState);
+   public List<Map<String,Object>> clue_actCost(String clTime,String clTimes,String clFollow,
+                                                String clSource,String clHigh,Integer clState,String clName){
+       return clueDao.clue_actCost(clTime, clTimes, clFollow, clSource, clHigh, clState,clName);
    }
    //线索新增
     public void clue_newly(Clue clue){
