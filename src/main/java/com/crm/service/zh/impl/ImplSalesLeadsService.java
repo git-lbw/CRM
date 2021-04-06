@@ -32,4 +32,9 @@ public class ImplSalesLeadsService implements SalesLeadsService {
     public boolean updateSalesLead(SalesLeads salesLeads) {
         return salesLeadsDao.updateSalesLead(salesLeads);
     }
+
+    //根据年份查询所有机会
+    public List<SalesLeadsVo> jhall(String year) {
+        return salesLeadsDao.jhall(year);
+    }
 }

@@ -184,9 +184,52 @@ public class OrdessCorller {
     }
 
     @GetMapping("/getkhyear")
-    public RestContent getkhyear(){
-        List<String> all = orderssService.getkhyear();
-        return returnContent.getContent(all,"数据获取成功","数据获取失败");
+    public List<String> getkhyear(){
+        System.err.println("客户年份");
+        List<String> nf = orderssService.getkhyear();
+        return nf;
+    }
+
+    @GetMapping("/getddyear")
+    public List<String> getddyear(){
+        List<String> dd = orderssService.getddyear();
+        return dd;
+    }
+
+    @GetMapping("/getxsyear")
+    public List<String> getxsyear(){
+        List<String> dd = orderssService.getxsyear();
+        return dd;
+    }
+
+    @GetMapping("/gettopyear")
+    public List<String> gettopyear(){
+        List<String> dd = orderssService.gettopyear();
+        return dd;
+    }
+
+    @GetMapping("/gethtyear")
+    public List<String> gethtyear(){
+        List<String> dd = orderssService.gethtyear();
+        return dd;
+    }
+
+    @GetMapping("/getldyear")
+    public List<String> getldyear(){
+        List<String> dd = orderssService.getldyear();
+        return dd;
+    }
+
+    @GetMapping("/getcpxsyear")
+    public List<String> getcpxsyear(){
+        List<String> dd = orderssService.getcpxsyear();
+        return dd;
+    }
+
+    @GetMapping("/getjhyear")
+    public List<String> getjhyear(){
+        List<String> dd = orderssService.getjhyear();
+        return dd;
     }
 
 

@@ -1,6 +1,7 @@
 package com.crm.service.xqp.impl;
 
 import com.crm.dao.xqp.OrdessDao;
+import com.crm.dao.zh.OrdersDao;
 import com.crm.entities.Orders;
 import com.crm.service.xqp.OrderssService;
 import com.crm.vo.xqp.YearVO;
@@ -15,6 +16,8 @@ public class ImpOrderssService implements OrderssService {
 
     @Resource
     private OrdessDao ordessDao;
+
+
 
     public YearVO getmonth(String year) {
         return ordessDao.dde(year);
@@ -71,5 +74,32 @@ public class ImpOrderssService implements OrderssService {
    public List<String> getkhyear(){
         return ordessDao.getkhyear();
    };
+    public List<String> getddyear(){
+        return ordessDao.getddyear();
+    };
+
+    public List<String> getxsyear(){
+        return ordessDao.getxsyear();
+    };
+
+    public List<String> gettopyear(){
+        return ordessDao.gettopyear();
+    };
+
+    public List<String> gethtyear(){
+        return ordessDao.gethtyear();
+    };
+
+    public List<String> getldyear(){
+        return ordessDao.getldyear();
+    };
+
+    public List<String> getcpxsyear(){
+        return ordessDao.getcpxsyear();
+    };
+
+    public List<String> getjhyear(){
+        return ordessDao.getjhyear();
+    }
 
 }

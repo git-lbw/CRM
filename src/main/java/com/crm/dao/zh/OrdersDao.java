@@ -16,4 +16,10 @@ public interface OrdersDao {
     //根据销售订单id查询
     @Select("select * from orders as od,staff as st,customer as cu where od.staff_id=st.staff_id and od.cu_id=cu.cu_id and od.order_id=#{orderId}")
     public Orders getOrderByOrderId(Integer orderId);
+
+    //根据年份查询
+    List<OrdersVo> orderssall(String year);
+
+    //客户数年份
+    List<String> getkhyear();
 }

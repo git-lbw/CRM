@@ -105,8 +105,33 @@ public interface OrdessDao {
 //            "where year(o.fixture_date)=#{year}")
 //    List<Orders> orderall(String year);
 
-    //客户数年份
+    //查询客户年份
     List<String> getkhyear();
+
+    //查询订单年份
+    List<String> getddyear();
+
+    //查询线索年份
+    List<String> getxsyear();
+
+    //查询top10客户年份
+    List<String> gettopyear();
+
+    //查询合同年份
+    List<String> gethtyear();
+
+    //查询漏斗年份
+    List<String> getldyear();
+
+    //查询产品销售年份
+    List<String> getcpxsyear();
+
+    //查询机会年份
+    List<String> getjhyear();
+
+
+
+
 
 
 }

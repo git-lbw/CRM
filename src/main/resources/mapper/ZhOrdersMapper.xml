@@ -38,4 +38,10 @@
         select * from orders as od,staff as st,customer as cu where
         od.staff_id=st.staff_id and od.cu_id=cu.cu_id and year(od.fixture_date)=#{year}
     </select>
+
+
+
+
+
+
 </mapper>

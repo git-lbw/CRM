@@ -22,6 +22,13 @@ public interface OrderssService {
      List<Map<String,Long>> cp(String year);
      List<Map<String,Long>> xsld(String year);
      List<String> getkhyear();
+     List<String> getddyear();
+     List<String> getxsyear();
+     List<String> gettopyear();
+     List<String> gethtyear();
+     List<String> getldyear();
+     List<String> getcpxsyear();
+     List<String> getjhyear();
    //  List<Orders> orderall(String year);
 }
 
