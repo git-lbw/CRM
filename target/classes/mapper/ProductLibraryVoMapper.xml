@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.crm.dao.thf.ProductLibraryVoDao">
+    <resultMap id="ProductLibraryVoMapper" type="com.crm.vo.thf.ProductLibraryVo">
+        <id column="product_id" property="productId"/>
+        <result column="product_name" property="productName"/>
+        <result column="staff_name" property="staffName"/>
+        <result column="productunit_neme" property="productunitNeme"/>
+        <result column="inventorystatus_name" property="inventorystatusName"/>
+        <result column="inventory_quantity" property="inventoryQuantity"/>
+        <result column="available_stock" property="availableStock"/>
+        <result column="lock_inventory" property="lockInventory"/>
+        <result column="product_model" property="productModel"/>
+        <result column="product_description" property="productDescription"/>
+        <result column="product_creationtime" property="productCreationtime"/>
+        <result column="productclassification_name" property="productclassificationName"/>
+        <result column="product_price" property="productPrice"/>
+    </resultMap>
+    <!--查询所有产品信息-->
+    <select id="getAllProductLibraryVo" resultMap="ProductLibraryVoMapper">
+        SELECT a.product_id,a.product_name,e.staff_name,b.productclassification_name,c.productunit_neme,d.inventorystatus_name,a.inventory_quantity,a.available_stock,a.lock_inventory,a.product_model,a.product_description,a.product_creationtime,a.product_price from product a
+             LEFT JOIN productclassification b ON a.productclassification_id = b.productclassification_id
+             LEFT JOIN productunit c ON a.productunit_id = c.productunit_id
+             LEFT JOIN inventorystatus d ON a.inventorystatus_id = d.inventorystatus_id
+             LEFT JOIN staff e ON a.staff_id = e.staff_id
+    </select>
+
+</mapper>

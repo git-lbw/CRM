@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.crm.dao.sdn.TicketDao">
+    <resultMap id="r" type="com.crm.entities.Ticket">
+        <id column="k_id" property="kId"></id>
+        <result column="k_money" property="kMoney"></result>
+        <result column="k_date" property="kDate"></result>
+        <result column="k_state" property="kState"></result>
+    </resultMap>
+
+    <select id="findAllTicket" resultType="com.crm.vo.sdn.TicketVo">
+        select * from ticket t left join record re on re.re_id=t.re_id left join contract c on c.contract_id=re.contract_id left join
+        customer cu on cu.cu_id=c.cu_id left join staff sta on sta.staff_id=cu.staff_id where t.k_id like '%${kId}%' and t.k_state=0 order by k_date desc
+    </select>
+
+
+    <select id="findTicketJL" resultType="com.crm.vo.sdn.TicketVo">
+        select * from ticket t left join record re on re.re_id=t.re_id left join contract c on c.contract_id=re.contract_id left join
+        customer cu on cu.cu_id=c.cu_id left join staff sta on sta.staff_id=cu.staff_id where t.k_id like '%${kId}%' and t.k_state=1 order by k_date desc
+    </select>
+
+    <!--办理开票 修改票据的状态-->
+    <update id="updateKState">
+        update ticket set k_state=1 where k_id=0
+    </update>
+</mapper>

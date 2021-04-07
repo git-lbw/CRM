@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.crm.dao.sdn.SdnOrdersDao">
+    <resultMap id="r" type="com.crm.entities.Contract">
+        <id column="contract_id" property="contractId"></id>
+        <result column="contract_name" property="contractName"></result>
+        <result column="contract_money" property="contractMoney"></result>
+        <result column="start_date" property="startDate"></result>
+        <result column="end_date" property="endDate"></result>
+        <result column="returned_number" property="returnedNumber"></result>
+        <result column="billing_state" property="billingState"></result>
+        <result column="contract_state" property="contractState"></result>
+        <result column="create_time" property="createTime"></result>
+        <result column="update_time" property="updateTime"></result>
+        <result column="operator" property="operator"></result>
+        <result column="notes" property="notes"></result>
+    </resultMap>
+
+    <select id="findAllOrders" resultType="com.crm.vo.sdn.OrdersVo">
+ /*   select * from orders o left join contract co on co.contract_id=o.contract_id left join record re on re.contract_id=co.contract_id
+    left join returns rt on rt.r_id=re.r_id left join customer cu on cu.cu_id=rt.cu_id left join staff st on st.staff_id=cu.staff_id
+    where o.order_name like '%${orderName}%' order by order_id desc*/
+
+    select * from contract co left join customer cu on co.cu_id=cu.cu_id left join staff st on st.staff_id=cu.staff_id where co.contract_name like
+    '%${contractName}%' order by create_time desc
+    </select>
+</mapper>

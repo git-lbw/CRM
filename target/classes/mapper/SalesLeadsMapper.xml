@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.crm.dao.zh.SalesLeadsDao">
+
+    <resultMap id="SalesLeadsResultMap" type="com.crm.vo.zh.SalesLeadsVo">
+        <id column="sales_leads_id" property="salesLeadsId" />
+        <result column="chance_name" property="chanceName" />
+        <result column="chance_type" property="chanceType" />
+        <result column="estimated_amount" property="estimatedAmount" />
+        <result column="sales_state" property="salesState" />
+        <result column="create_time" property="createTime" />
+        <result column="update_time" property="updateTime" />
+        <result column="operator" property="operator" />
+        <result column="notes" property="notes" />
+        <result column="staff_id" property="staffId" />
+        <result column="staff_name" property="staffName" />
+        <result column="cu_id" property="cuId" />
+        <result column="cu_name" property="cuName" />
+    </resultMap>
+
+    <select id="selectAll" resultMap="SalesLeadsResultMap">
+        select * from sales_leads as sa,staff as st,customer as cu
+        where sa.staff_id=st.staff_id and sa.cu_id=cu.cu_id order by create_time desc
+    </select>
+
+    <insert id="addSalesLead" parameterType="com.crm.entities.SalesLeads">
+        Insert into sales_leads(chance_name,chance_type,staff_id,cu_id,estimated_amount,sales_state,
+        create_time,update_time,operator,notes) values (#{chanceName},#{chanceType},#{staffId},#{cuId},
+        #{estimatedAmount},#{salesState},#{createTime},#{createTime},#{operator},#{notes})
+    </insert>
+
+    <update id="updateSalesLead" parameterType="com.crm.entities.SalesLeads">
+        update sales_leads set chance_name=#{chanceName},chance_type=#{chanceType},staff_id=#{staffId},
+        cu_id=#{cuId},estimated_amount=#{estimatedAmount},sales_state=#{salesState},update_time=#{updateTime},
+        operator=#{operator},notes=#{notes} where sales_leads_id=#{salesLeadsId}
+    </update>
+
+    <select id="jhall" resultMap="SalesLeadsResultMap">
+         select * from sales_leads as sa,staff as st,customer as cu
+        where sa.staff_id=st.staff_id and sa.cu_id=cu.cu_id and year(sa.create_time)=#{year}
+    </select>
+</mapper>
