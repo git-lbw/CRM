@@ -34,10 +34,14 @@
     </select>
 
 
-    <!--删除计划-->
-    <!--    <delete id="deleReturns">
-            delete from returns where r_id=#{rId}
-        </delete>-->
+    <!--回款状态视图-->
+    <resultMap id="returnsView" type="com.crm.entities.Returns">
+        <result column="number" property="number"></result>
+        <result column="type" property="type"></result>
+    </resultMap>
 
+    <select id="findReturnsView" resultType="com.crm.vo.sdn.ReturnsVo">
+     select c.r_state as type,count(*) as number from returns c group by c.r_state
+    </select>
 
 </mapper>

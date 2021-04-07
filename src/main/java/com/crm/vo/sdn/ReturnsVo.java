@@ -46,6 +46,24 @@ public class ReturnsVo {
     private Integer cuMake;
     private java.sql.Date cuTime;
     private String cuSource;
+    private String type;
+    private String number;
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
+
+    public String getNumber() {
+        return number;
+    }
+
+    public void setNumber(String number) {
+        this.number = number;
+    }
 
     public Integer getrId() {
         return rId;

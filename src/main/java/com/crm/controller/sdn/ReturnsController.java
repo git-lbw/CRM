@@ -39,7 +39,7 @@ public class ReturnsController {
         return returnContent.getContent(map,"查询成功！","查询失败！");
     }*/
 
-
+    //查询回款计划
     @GetMapping("/findAllReturns")
     public RestContent findAllReturns(Integer pageNum,Integer size,String search){
         ReturnsVo returnsVo= JSONObject.toJavaObject(JSON.parseObject(search),ReturnsVo.class);
@@ -52,12 +52,12 @@ public class ReturnsController {
     }
 
 
-/*
-    //批量删除
-    @RequestMapping("/deleAllreturns")
-    public void deleReturns(@RequestBody List<ReturnsVo> returnsVos){
-        returnsService.deleReturns(returnsVos);
+    /*饼状视图*/
+    @GetMapping("/findReturnsV")
+    @ResponseBody
+    public List<ReturnsVo> findReturnsView(@RequestParam("pieValue") String pieValue){
+        return returnsService.findReturnsView(pieValue);
     }
-*/
+
 
 }

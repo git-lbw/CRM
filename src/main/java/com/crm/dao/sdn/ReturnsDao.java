@@ -15,9 +15,10 @@ public interface ReturnsDao {
         //查询回款计划
         /*List<ReturnsVo> findAllReturns(String contractName);*/
 
+        //查询回款计划
         List<ReturnsVo> findAllReturns(ReturnsVo returnsVo);
 
-      /*  //删除回款计划
-        void deleReturns(Integer rId);*/
+        //回款状态视图
+        public List<ReturnsVo> findReturnsView();
 
 }
