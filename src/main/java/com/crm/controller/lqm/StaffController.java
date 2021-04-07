@@ -8,10 +8,7 @@ import com.crm.utils.RestContent;
 import com.crm.utils.ReturnContent;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -41,4 +38,15 @@ public class StaffController {
         log.info("结果"+allStaff);
         return returnContent.getContent(allStaff,"数据获取成功","数据获取失败");
     }
+
+    @PostMapping("/login/{username}/{password}")
+    public RestContent Stafflogin(@PathVariable("username") String account, @PathVariable("password") String password){
+        Staff staff = staffService.staffLogin(account, password);
+        if (staff!=null){
+            return returnContent.getContent(1,"登录成功","登录失败");
+        }else {
+            return returnContent.getContent(null,"登录成功","登录失败，账号或密码错误");
+        }
+    }
+
 }

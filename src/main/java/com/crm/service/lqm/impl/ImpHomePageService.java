@@ -1,10 +1,7 @@
 package com.crm.service.lqm.impl;
 
 import com.crm.dao.lqm.HomePageDao;
-import com.crm.entities.Clue;
-import com.crm.entities.Customer;
-import com.crm.entities.Orders;
-import com.crm.entities.SalesLeads;
+import com.crm.entities.*;
 import com.crm.service.lqm.HomePageService;
 import com.crm.vo.lqm.HomeLinkManVo;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -41,5 +38,25 @@ public class ImpHomePageService implements HomePageService {
     @Override
     public List<Orders> NewSalesOrderData() {
         return homePageDao.NewSalesOrderData();
+    }
+
+    @Override
+    public List<Orders> NewSalesData() {
+        return homePageDao.NewSalesData();
+    }
+
+    @Override
+    public List<Activity> CreateActivity() {
+        return homePageDao.CreateActivity();
+    }
+
+    @Override
+    public List<Clue> getNoFollowClue() {
+        return homePageDao.getNoFollowClue();
+    }
+
+    @Override
+    public List<Customer> getNoFollowCustomer() {
+        return homePageDao.getNoFollowCustomer();
     }
 }
