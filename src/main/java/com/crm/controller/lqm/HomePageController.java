@@ -51,7 +51,7 @@ public class HomePageController {
     @GetMapping("/getNewSalesOrderData")
     public RestContent NewSalesOrderData(){
         List<Orders> orders = homePageService.NewSalesOrderData();
-        return returnContent.getContent(orders,"获取新增联系人数据成功","获取新增联系人数据失败");
+        return returnContent.getContent(orders,"获取新增销售订单数据成功","获取新增销售订单数据失败");
     }
 //    @GetMapping("/getNewOpportunityData")
 //    public RestContent NewOpportunityData(){

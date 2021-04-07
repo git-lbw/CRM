@@ -20,4 +20,6 @@ public interface HomePageService {
     public List<Clue> NewClueData();
 
     public List<Orders> NewSalesOrderData();
+
+
 }

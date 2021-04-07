@@ -13,6 +13,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.List;
+
 import static com.crm.utils.Constant.*;
 
 
@@ -31,5 +33,12 @@ public class StaffController {
         Staff staff = staffService.getStaffById(id);
         log.info("结果"+staff);
         return returnContent.getContent(staff,"数据获取成功","数据获取失败");
+    }
+
+    @GetMapping("/getAllStaff")
+    public RestContent getAllStaff(){
+        List<Staff> allStaff = staffService.getAllStaff();
+        log.info("结果"+allStaff);
+        return returnContent.getContent(allStaff,"数据获取成功","数据获取失败");
     }
 }
