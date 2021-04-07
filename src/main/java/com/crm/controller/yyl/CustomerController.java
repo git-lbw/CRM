@@ -1,6 +1,5 @@
 package com.crm.controller.yyl;
 
-import com.crm.dao.yyl.CustomerDao;
 import com.crm.service.yyl.CustomerService;
 import com.crm.utils.RestContent;
 import com.crm.utils.ReturnContent;
