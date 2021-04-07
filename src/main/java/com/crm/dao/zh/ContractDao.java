@@ -9,6 +9,6 @@ import java.util.List;
 public interface ContractDao {
     //查询所有销售合同
     public List<ContractVo> getContractAll();
-    //新增销售合同
+    //新增销售合同poi
     public boolean addContract(ContractVo contractVo);
 }

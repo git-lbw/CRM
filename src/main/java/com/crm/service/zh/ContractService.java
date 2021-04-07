@@ -7,6 +7,6 @@ import java.util.List;
 public interface ContractService {
     //查询所有销售合同
     public List<ContractVo> getContractAll();
-    //新增销售合同
+    //新增销售合同poio
     public boolean addContract(ContractVo contractVo);
 }
