@@ -1,0 +1,44 @@
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.crm.dao.yyl.ActivityDao">
+    <!--查询所有-->
+    <select id="select" resultType="java.util.Map">
+        SELECT * FROM activity ac  LEFT JOIN staff st ON ac.staff_id=st.staff_id WHERE ac.ac_state!=0 ORDER BY ac.ac_starttime DESC
+    </select>
+    <!--查询市场活动名称-->
+    <select id="vague" resultType="java.util.Map">
+        SELECT * FROM activity ac  LEFT JOIN staff st ON ac.staff_id=st.staff_id WHERE ac.ac_state!=0 and ac.ac_name LIKE'%${acName}%' ORDER BY ac.ac_starttime DESC
+    </select>
+    <!--高级查询-->
+    <select id="actCost" resultType="java.util.Map">
+        SELECT * FROM activity ac  LEFT JOIN staff st ON ac.staff_id=st.staff_id
+        <where>
+            <if test="acStarttime != null and acStarttime!='' or acStarttimes !=null and acStarttimes!='' ">
+                and ac_starttime  between '${acStarttime}' and '${acStarttimes}'
+            </if>
+            <if test="acType !=null and acType !='' ">
+                and ac_type='${acType}'
+            </if>
+            <if test="acState !=null and acState !='' ">
+                and ac_state='${acState}'
+            </if>
+            <if test="acName!=null and acName!='' ">
+                and ac_name LIKE'%${acName}%'
+            </if>
+            and  ac.ac_state!=0
+        </where>
+            ORDER BY ac.ac_starttime DESC
+    </select>
+    <!--新增-->
+    <insert id="add">
+        INSERT INTO activity VALUES(null,#{staffId},#{acName},#{acStarttime},#{acEndtime},#{acSite},#{acType},#{acState},#{acPlanned},#{acActualcost},#{acIncome},#{acReality})
+    </insert>
+    <!--修改-->
+    <update id="amend">
+        UPDATE activity SET ac_name='${acName}',ac_site='${acSite}',ac_type='${acType}',ac_state=${acState},ac_planned=${acPlanned},ac_actualcost=${acActualcost},
+        ac_income=${acIncome},ac_reality=${acReality} WHERE ac_id=${acId}
+    </update>
+    <!--删除-->
+    <update id="cancel">
+        UPDATE activity SET ac_state=0 WHERE ac_id=${acId}
+    </update>
+</mapper>

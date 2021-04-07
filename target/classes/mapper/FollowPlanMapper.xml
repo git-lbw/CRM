@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.crm.dao.wjl.FollowPlanDao">
+    <resultMap id="FollowPlanMap" type="com.crm.entities.FollowPlan">
+        <id column="plan_id" property="planId" />
+        <result column="resources_id" property="resourcesId" />
+        <result column="rid" property="rid" />
+        <result column="plan_state" property="planState" />
+        <result column="plan_content" property="planContent" />
+        <result column="plan_time" property="planTime" />
+        <result column="Made_by" property="madeBy" />
+        <result column="plan_type" property="planType" />
+        <result column="create_time" property="createTime" />
+    </resultMap>
+
+    <select id="selectAll" resultMap="FollowPlanMap">
+        SELECT *FROM follow_plan WHERE plan_state=1 AND Made_by=1
+    </select>
+
+    <update id="deletePlan" parameterType="com.crm.entities.FollowPlan">
+        UPDATE follow_plan f SET plan_state=0 WHERE f.plan_id=#{planId}
+    </update>
+
+
+
+
+
+</mapper>

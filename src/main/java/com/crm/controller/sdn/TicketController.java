@@ -8,10 +8,7 @@ import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
 import java.util.List;
@@ -30,7 +27,7 @@ public class TicketController {
 
     //所有开票
     @GetMapping("/findAllTickets")
-    public RestContent findAllTicket(Integer pageNum,Integer size,Integer kId){
+    public RestContent findAllTicket(Integer pageNum,Integer size,String kId){
         Map<String,Object> map=new HashMap<String, Object>();
         Page<Object> page= PageHelper.startPage(pageNum,size);
         List<TicketVo> ticket=ticketService.findAllTicket(kId);
@@ -41,7 +38,7 @@ public class TicketController {
 
     //查询开票记录
     @GetMapping("/findTicketJiLu")
-    public RestContent findTicketJL(Integer pageNum,Integer size,Integer kId){
+    public RestContent findTicketJL(Integer pageNum,Integer size,String kId){
         Map<String,Object> map=new HashMap<String, Object>();
         Page<Object> page= PageHelper.startPage(pageNum,size);
         List<TicketVo> tickets=ticketService.findTicketJL(kId);
@@ -51,8 +48,8 @@ public class TicketController {
     }
 
     //开票办理 修改票据状态
-/*    @PostMapping("/updateKState")
-    public void updateKState(TicketVo ticketVo){
-        ticketService.updateKState(ticketVo);
-    }*/
+    @GetMapping("/updateKState")
+    public void updateKState(@RequestParam("kId") String kId){
+        ticketService.updateKState(kId);
+    }
 }

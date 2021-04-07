@@ -1,9 +1,6 @@
 package com.crm.service.lqm;
 
-import com.crm.entities.Clue;
-import com.crm.entities.Customer;
-import com.crm.entities.Orders;
-import com.crm.entities.SalesLeads;
+import com.crm.entities.*;
 import com.crm.vo.lqm.HomeLinkManVo;
 import org.springframework.stereotype.Service;
 
@@ -20,4 +17,12 @@ public interface HomePageService {
     public List<Clue> NewClueData();
 
     public List<Orders> NewSalesOrderData();
+
+    public List<Orders> NewSalesData();
+
+    public List<Activity> CreateActivity();
+
+    public List<Clue> getNoFollowClue();
+
+    public List<Customer> getNoFollowCustomer();
 }

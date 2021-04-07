@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.crm.dao.wjl.TaskDao">
+
+    <resultMap id="TaskMap" type="com.crm.entities.Task">
+        <id column="task_id" property="taskId" />
+        <result column="resources_id" property="resourcesId" />
+        <result column="rid" property="rid" />
+        <result column="task_name" property="taskName" />
+        <result column="staff_id" property="staffId" />
+        <result column="create_time" property="createTime" />
+        <result column="task_explain" property="taskExplain" />
+        <result column="by_time" property="byTime" />
+        <result column="task_state" property="taskState" />
+        <result column="create_name" property="createName" />
+        <result column="complete_time" property="completeTime" />
+        <result column="task_to" property="taskTo" />
+    </resultMap>
+
+    <select id="SelectTaskAll" resultMap="TaskMap">
+        select *from task t where  t.task_state=1
+    </select>
+
+</mapper>

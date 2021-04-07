@@ -22,12 +22,12 @@ public class ReturnsVo {
     private Integer rBeenp;
     private double rMaym;
     private double rBeenm;
-    private Date rDate;
+    private Timestamp rDate;
     private Integer rState;
     private String contractName;
     private double contractMoney;
-    private Date startDate;
-    private Date endDate;
+    private java.sql.Date startDate;
+    private java.sql.Date endDate;
     private Integer returnedNumber;
     private Integer billingState;
     private String contractState;
@@ -44,8 +44,26 @@ public class ReturnsVo {
     private String cuRank;
     private String cuState;
     private Integer cuMake;
-    private Date cuTime;
+    private java.sql.Date cuTime;
     private String cuSource;
+    private String type;
+    private String number;
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
+
+    public String getNumber() {
+        return number;
+    }
+
+    public void setNumber(String number) {
+        this.number = number;
+    }
 
     public Integer getrId() {
         return rId;
@@ -110,13 +128,12 @@ public class ReturnsVo {
     public void setrBeenm(double rBeenm) {
         this.rBeenm = rBeenm;
     }
-    @DateTimeFormat(pattern = "yyyy-MM-dd")
-    @JsonFormat(pattern = "yyyy-MM-dd", timezone = "GMT+8")
-    public Date getrDate() {
+
+    public Timestamp getrDate() {
         return rDate;
     }
 
-    public void setrDate(Date rDate) {
+    public void setrDate(Timestamp rDate) {
         this.rDate = rDate;
     }
 

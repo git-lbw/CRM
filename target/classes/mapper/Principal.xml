@@ -1,0 +1,21 @@
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.crm.dao.yyl.PrincipalDao">
+    <resultMap id="StaffMap" type="com.crm.entities.Staff">
+        <id column="staff_id" property="staffId" />
+        <result column="staff_name" property="staffName" />
+        <result column="staff_account" property="staffAccount" />
+        <result column="staff_password" property="staffPassword" />
+        <result column="staff_phone" property="staffPhone" />
+    </resultMap>
+    <!-- 查询所有-->
+    <select id="select" resultMap="StaffMap">
+        SELECT * FROM staff
+    </select>
+
+    <!--查询名字-->
+    <select id="staff_name" resultMap="StaffMap">
+        SELECT * FROM staff WHERE staff_id='${staffId}'
+    </select>
+
+
+</mapper>

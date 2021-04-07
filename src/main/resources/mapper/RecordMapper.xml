@@ -37,4 +37,10 @@
         update returns set r_state=1 where r_id=#{rId}
     </update>
 
+    <!--新增开票-->
+    <insert id="saveKaiPiao">
+        insert into ticket values(#{kId},#{staffId},#{reId},#{kMoney},#{kDate},#{kState},#{cuId})
+    </insert>
+
+
 </mapper>
