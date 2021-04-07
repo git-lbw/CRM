@@ -16,4 +16,6 @@ public interface OrdersService {
     List<OrdersVo>orderssall(String year);
 
     List<String> getkhyear();
+    //修改订单
+    public Boolean updateOrder(Orders orders);
 }

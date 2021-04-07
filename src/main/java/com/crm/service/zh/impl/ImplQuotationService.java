@@ -34,4 +34,9 @@ public class ImplQuotationService implements QuotationService {
     public boolean updateQuotation(Quotation quotation) {
         return quotationDao.updateQuotation(quotation);
     }
+
+    @Override
+    public Boolean delQuotation(Integer quotationId) {
+        return quotationDao.delQuotation(quotationId);
+    }
 }

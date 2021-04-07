@@ -1,5 +1,21 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.crm.dao.yyl.CustomerDao">
+    <resultMap id="customerMap" type="com.crm.entities.Customer">
+        <id column="cu_id" property="cuId" />
+        <result column="staff_id" property="staffId" />
+        <result column="cu_name" property="cuName" />
+        <result column="cu_high" property="cuHigh" />
+        <result column="cu_rank" property="cuRank" />
+        <result column="cu_state" property="cuState" />
+        <result column="cu_make" property="cuMake" />
+        <result column="cu_time" property="cuTime" />
+        <result column="cu_source" property="cuSource" />
+    </resultMap>
+    <!--查询客户和客户公海-->
+    <select id="customer_all"  resultMap="customerMap">
+        SELECT * FROM customer cu LEFT JOIN staff st ON cu.staff_id=st.staff_id ORDER BY cu.cu_time DESC
+    </select>
+
     <!--查询客户所有-->
     <select id="customer_select" resultType="java.util.Map">
         SELECT * FROM customer cu LEFT JOIN staff st ON cu.staff_id=st.staff_id WHERE cu.cu_make=0 ORDER BY cu.cu_time DESC
@@ -18,7 +34,7 @@
     <select id="customer_hightname" resultType="java.util.Map">
         SELECT * FROM customer cu LEFT JOIN staff st ON cu.staff_id=st.staff_id WHERE cu.cu_make=1 and cu.cu_name LIKE'%${cuNames}%' ORDER BY cu.cu_time DESC
     </select>
-    
+
     <!--客户高级查询-->
     <select id="customer_advanced" resultType="java.util.Map">
         SELECT * FROM customer cu LEFT JOIN staff st ON cu.staff_id=st.staff_id
@@ -38,7 +54,34 @@
             <if test="cuRank!=null and cuRank!='' ">
                 and cu_rank='${cuRank}'
             </if>
+            <if test="cuName!=null and cuName!='' ">
+                and cu_name like '%${cuName}%'
+            </if>
+            and cu.cu_make=0
         </where>
+        ORDER BY cu.cu_time DESC
     </select>
 
+    <!--客户新增-->
+    <insert id="cutomer_insert">
+       INSERT INTO customer VALUES(null,#{staffId},#{cuName},#{cuHigh},#{cuRank},#{cuState},0,sysdate(),#{cuSource})
+    </insert>
+
+    <!--客户编辑-->
+    <update id="cutomer_update">
+        UPDATE customer SET cu_name='${cuName}',cu_high='${cuHigh}',cu_rank='${cuRank}',cu_state='${cuState}',cu_source='${cuSource}' WHERE cu_id=${cuId}
+    </update>
+    <!--客户归到客户公海-->
+    <update id="cutomer_flyback">
+        UPDATE customer SET cu_make=1,staff_id=NULL WHERE cu_id=${cuId}
+    </update>
+    <!--重新分配分责人-->
+    <update id="cutomer_allocation">
+        UPDATE customer SET staff_id=${staffId},cu_make=0 WHERE cu_id=${cuId}
+    </update>
+
+    <!--查询ID-->
+    <select id="customer_num" resultMap="customerMap">
+        SELECT * FROM customer cu LEFT JOIN staff st ON cu.staff_id=st.staff_id WHERE cu.cu_id=#{cuId} ORDER BY cu.cu_time DESC
+    </select>
 </mapper>

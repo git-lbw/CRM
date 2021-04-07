@@ -1,6 +1,10 @@
 package com.crm.dao.lqm;
 
+import com.crm.entities.Clue;
 import com.crm.entities.Customer;
+import com.crm.entities.Orders;
+import com.crm.entities.SalesLeads;
+import com.crm.vo.lqm.HomeLinkManVo;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
 
@@ -19,26 +23,30 @@ public interface HomePageDao {
      * 查询本月新增联系人
      * @return
      */
-    public List<Customer> NewContactData();
+    public List<HomeLinkManVo> NewContactData();
     /**
      * 查询本月新增销售机会
      * @return
      */
-    public List<Customer> NewOpportunityData();
+    @Select("select * from sales_leads WHERE DATE_FORMAT( create_time, '%Y%m' ) = DATE_FORMAT( CURDATE( ) , '%Y%m' )")
+    public List<SalesLeads> NewOpportunityData();
     /**
      * 查询本月新增线索
      * @return
      */
-    public List<Customer> NewClueData();
+    @Select("SELECT * FROM clue WHERE DATE_FORMAT( cl_time, '%Y%m' ) = DATE_FORMAT( CURDATE( ) , '%Y%m' )")
+    public List<Clue> NewClueData();
     /**
      * 查询本月新增销售订单
      * @return
      */
-    public List<Customer> NewSalesOrderData();
+    @Select("SELECT * FROM orders WHERE DATE_FORMAT( create_time, '%Y%m' ) = DATE_FORMAT( CURDATE( ) , '%Y%m' )")
+    public List<Orders> NewSalesOrderData();
     /**
      * 查询本月新增销售额
      * @return
      */
+    @Select("SELECT * FROM orders WHERE order_state!='未开始' and DATE_FORMAT( create_time, '%Y%m' ) = DATE_FORMAT( CURDATE( ) , '%Y%m' )")
     public List<Customer> NewSalesData();
     /**
      * 查询本月新增回款额
