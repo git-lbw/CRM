@@ -10,8 +10,11 @@ import lombok.NoArgsConstructor;
 public class ProductLibraryVo {
     private Integer productId;
     private String productName;
+    private Integer staffId;
     private String staffName;
+    private Integer productunitId;
     private String productunitNeme;
+    private Integer inventorystatusId;
     private String inventorystatusName;
     private Integer inventoryQuantity;
     private Integer availableStock;
@@ -19,6 +22,7 @@ public class ProductLibraryVo {
     private String productModel;
     private String productDescription;
     private java.sql.Date productCreationtime;
+    private Integer productclassificationId;
     private String productclassificationName;
-    private double productPrice;
+    private Double productPrice;
 }

@@ -3,11 +3,14 @@ package com.crm.service.sdn;
 import com.crm.dao.sdn.RecordDao;
 import com.crm.dao.sdn.ReturnsDao;
 import com.crm.vo.sdn.RecordVo;
+import com.crm.vo.sdn.TicketVo;
 import com.sun.org.apache.xpath.internal.operations.Bool;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.sql.Time;
+import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
@@ -56,5 +59,12 @@ public class RecordService {
         if(isOk){
             recordDao.updateReturnState(recordVo.getrId());
         }
+
+        //新增开票
+        String str2="KP"+sdf.format(date);
+
+        TicketVo kaipiao=new TicketVo(str2,recordVo.getStaffId(),recordVo.getReId(),recordVo.getReDate(),0,recordVo.getReBeenm(),recordVo.getCuId());
+        recordDao.saveKaiPiao(kaipiao);
+
     }
 }

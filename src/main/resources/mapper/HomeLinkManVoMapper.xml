@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.crm.dao.lqm.HomePageDao">
+    <resultMap id="HomeLinkVoResultMap" type="com.crm.vo.lqm.HomeLinkManVo">
+        <result column="li_name" property="liName" />
+        <result column="cu_name" property="cuName" />
+        <result column="staff_name" property="staffName" />
+        <result column="li_phone" property="liPhone" />
+        <result column="li_time" property="liTime" />
+    </resultMap>
+    <select id="NewContactData" resultMap="HomeLinkVoResultMap">
+        SELECT li.li_name,cu.cu_name, st.staff_name,li.li_phone,li.li_time
+        FROM linkman li
+        LEFT JOIN customer cu on li.cu_id = cu.cu_id
+        LEFT JOIN staff st on li.staff_id = st.staff_id
+        ORDER BY li.li_time DESC
+    </select>
+</mapper>

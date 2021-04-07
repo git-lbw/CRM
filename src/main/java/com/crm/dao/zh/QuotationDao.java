@@ -2,6 +2,7 @@ package com.crm.dao.zh;
 
 import com.crm.entities.Quotation;
 import com.crm.vo.zh.QuotationVo;
+import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Mapper;
 
 import java.util.List;
@@ -16,4 +17,7 @@ public interface QuotationDao {
     public List<QuotationVo> getQuotationAll();
     //修改报价单
     public boolean updateQuotation(Quotation quotation);
+    //删除报价单
+    @Delete("DELETE FROM quotation WHERE quotation_id = #{quotationId}")
+    public Boolean delQuotation(Integer quotationId);
 }

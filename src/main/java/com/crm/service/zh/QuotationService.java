@@ -14,4 +14,6 @@ public interface QuotationService {
     public List<QuotationVo> getQuotationAll();
     //修改报价单
     public boolean updateQuotation(Quotation quotation);
+    //删除报价单
+    public Boolean delQuotation(Integer quotationId);
 }

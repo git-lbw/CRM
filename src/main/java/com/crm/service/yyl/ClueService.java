@@ -31,8 +31,9 @@ public class ClueService {
         return clueDao.clue_namehight(clNames);
     }
     //线索高级查询
-   public List<Map<String,Object>> clue_actCost(String clTime,String clTimes,String clFollow,String clSource,String clHigh,Integer clState){
-       return clueDao.clue_actCost(clTime, clTimes, clFollow, clSource, clHigh, clState);
+   public List<Map<String,Object>> clue_actCost(String clTime,String clTimes,String clFollow,
+                                                String clSource,String clHigh,Integer clState,String clName){
+       return clueDao.clue_actCost(clTime, clTimes, clFollow, clSource, clHigh, clState,clName);
    }
    //线索新增
     public void clue_newly(Clue clue){
@@ -49,5 +50,9 @@ public class ClueService {
     //重新分配负责人
     public void clue_allocation(Integer staffId,Integer clId){
         clueDao.clue_allocation(staffId, clId);
+    }
+
+    public List<Map<Object,String>> xsall(String year){
+        return clueDao.xsall(year);
     }
 }
