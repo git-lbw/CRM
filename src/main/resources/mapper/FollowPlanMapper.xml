@@ -14,15 +14,40 @@
         <result column="create_time" property="createTime" />
     </resultMap>
 
+    <resultMap id="CustomerMap" type="com.crm.entities.Customer">
+        <id column="cu_id" property="cuId" />
+        <result column="staff_id" property="staffId" />
+        <result column="cu_name" property="cuName" />
+        <result column="cu_high" property="cuHigh" />
+        <result column="cu_rank" property="cuRank" />
+        <result column="cu_state" property="cuState" />
+        <result column="cu_make" property="cuMake" />
+        <result column="cu_time" property="cuTime" />
+        <result column="cu_source" property="cuSource" />
+    </resultMap>
+
     <select id="selectAll" resultMap="FollowPlanMap">
         SELECT *FROM follow_plan WHERE plan_state=1 AND Made_by=1
     </select>
-
+    <!--获取资源表-->
+    <select id="getResources" resultType="java.lang.String" parameterType="java.lang.Integer">
+        SELECT DISTINCT r.resources_name FROM follow_plan f LEFT JOIN resources r
+        ON r.resources_id=f.resources_id WHERE f.resources_id=#{resourcesId} AND f.plan_state=1
+    </select>
+    <!-- 删除资源表   -->
     <update id="deletePlan" parameterType="com.crm.entities.FollowPlan">
         UPDATE follow_plan f SET plan_state=0 WHERE f.plan_id=#{planId}
     </update>
 
+    <!--获取资源信息-->
+    <select id="getCustomerById" resultMap="CustomerMap">
+       SELECT *FROM follow_plan f LEFT JOIN customer c ON c.cu_id=f.rid WHERE  f.plan_state=1 AND f.rid=#{rid}
+    </select>
 
+    <insert id="addPlan" parameterType="com.crm.entities.FollowPlan">
+        INSERT INTO follow_plan(resources_id,rid,plan_state,plan_content,plan_time,Made_by,plan_type,create_time)VALUES
+        (#{resourcesId},#{rid},#{planState},#{planContent},#{planTime},#{madeBy},#{planType},#{createTime})
+    </insert>
 
 
 

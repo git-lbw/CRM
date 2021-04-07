@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.crm.dao.wjl.TaskProgressDao">
+    <resultMap id="TaskProgressMap" type="com.crm.entities.TaskProgress">
+        <id column="progress_id" property="progressId" />
+        <result column="task_id" property="taskId" />
+        <result column="progress_content" property="progressContent" />
+        <result column="staff_id" property="staffId" />
+        <result column="progress_state" property="progressState" />
+        <result column="create_time" property="createTime" />
+    </resultMap>
+    <!--    根据任务id查询任务进展-->
+    <select id="selectTaskProgressAll" resultMap="TaskProgressMap">
+        SELECT *FROM task_progress t WHERE t.task_id=#{taskId} AND t.progress_state=1
+    </select>
+    <!--    新增任务进展-->
+    <insert id="addTaskProgress" parameterType="com.crm.entities.TaskProgress">
+        INSERT INTO task_progress(task_id,progress_content,staff_id,progress_state,create_time)
+        VALUE(#{taskId},#{progressContent},#{staffId},#{progressState},#{createTime})
+    </insert>
+
+    <!--    删除任务进展-->
+    <update id="deleteTaskProgress" parameterType="com.crm.entities.TaskProgress">
+        UPDATE task_progress t SET t.progress_state=0 WHERE t.progress_id=#{progressId}
+    </update>
+
+</mapper>

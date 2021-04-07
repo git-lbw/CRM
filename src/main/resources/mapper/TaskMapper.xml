@@ -18,8 +18,89 @@
         <result column="task_to" property="taskTo" />
     </resultMap>
 
+
+
+    <resultMap id="StaffResultMap" type="com.crm.entities.Staff">
+        <id column="staff_id" property="staffId" />
+        <result column="staff_name" property="staffName" />
+        <result column="staff_account" property="staffAccount" />
+        <result column="staff_password" property="staffPassword" />
+        <result column="staff_phone" property="staffPhone" />
+    </resultMap>
+
+    <resultMap id="CustomerMap" type="com.crm.entities.Customer">
+        <id column="cu_id" property="cuId" />
+        <result column="staff_id" property="staffId" />
+        <result column="cu_name" property="cuName" />
+        <result column="cu_high" property="cuHigh" />
+        <result column="cu_rank" property="cuRank" />
+        <result column="cu_state" property="cuState" />
+        <result column="cu_make" property="cuMake" />
+        <result column="cu_time" property="cuTime" />
+        <result column="cu_source" property="cuSource" />
+    </resultMap>
+
+    <resultMap id="TaskVoMap" type="com.crm.vo.wjl.TaskVo">
+        <id column="task_id" property="taskId" />
+        <result column="resources_id" property="resourcesId" />
+        <result column="rid" property="rid" />
+        <result column="task_name" property="taskName" />
+        <result column="staff_id" property="staffId" />
+        <result column="create_time" property="createTime" />
+        <result column="task_explain" property="taskExplain" />
+        <result column="by_time" property="byTime" />
+        <result column="task_state" property="taskState" />
+        <result column="create_name" property="createName" />
+        <result column="complete_time" property="completeTime" />
+        <result column="task_to" property="taskTo" />
+        <result column="staff_name" property="staffName" />
+    </resultMap>
+
+    <!--    获取所有任务-->
     <select id="SelectTaskAll" resultMap="TaskMap">
-        select *from task t where  t.task_state=1
+        select *from task t where  t.task_state=1 and t.task_name like concat('%',#{taskName},'%')
     </select>
+
+
+    <!-- 删除任务表-->
+    <update id="deleteTaskById" parameterType="com.crm.entities.Task">
+        UPDATE task t SET t.task_state=0 WHERE t.task_id=#{id} AND task_to=0
+    </update>
+
+    <update id="wcTaskById" parameterType="com.crm.entities.Task">
+       UPDATE task t SET t.task_to=1 WHERE t.task_id=#{id}
+    </update>
+
+    <select id="getTaskById" resultType="com.crm.entities.Task">
+        SELECT *FROM task t WHERE t.task_id=#{id} AND t.task_state=1
+    </select>
+
+    <!-- 修改任务   -->
+    <update id="xiugaiTask">
+        UPDATE task t SET t.task_name=#{taskName},t.task_explain=#{taskExplain},t.rid=#{rid},t.resources_id=#{resourcesId},staff_id=#{staffId},complete_time=#{completeTime}
+         WHERE  t.task_id=#{taskId}
+    </update>
+
+
+    <!-- 新增任务-->
+    <insert id="addTask" parameterType="com.crm.entities.Task">
+        INSERT INTO task(resources_id,rid,task_name,staff_id,create_time,task_explain,by_time,task_state,create_name,complete_time,task_to)
+        VALUE(#{resourcesId},#{rid},#{taskName},#{staffId},#{createTime},#{taskExplain},#{byTime},#{taskState},#{createName},#{completeTime},#{taskTo})
+    </insert>
+
+    <!--查询所有员工-->
+    <select id="getStaffAll"  resultMap="StaffResultMap">
+            select *from staff
+    </select>
+
+    <!--获取所有任务及员工    -->
+    <select id="selectAll" resultMap="TaskVoMap">
+         SELECT *FROM task t LEFT JOIN staff s ON t.staff_id=s.staff_id WHERE t.task_state=1 and t.task_name like concat('%',#{taskName},'%')
+    </select>
+
+
+
+
+
 
 </mapper>

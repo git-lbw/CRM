@@ -16,6 +16,7 @@
     <select id="SelectRecordAll" resultMap="RecordMap">
         SELECT *FROM follow_record WHERE record_state=1
     </select>
+
     <!--    新增跟进记录-->
     <insert id="addFollowRecord" parameterType="com.crm.vo.wjl.FollowRecordVo">
         INSERT INTO follow_record(resources_id,rid,record_type,record_content,record_state,create_time,staff_id) VALUES
@@ -25,5 +26,7 @@
     <delete id="deleteFollowRecord" parameterType="com.crm.vo.wjl.FollowRecordVo">
         UPDATE follow_record f SET f.record_state=0 WHERE f.record_id=#{id}
     </delete>
+
+
 
 </mapper>

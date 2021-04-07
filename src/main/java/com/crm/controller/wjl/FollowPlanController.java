@@ -37,7 +37,7 @@ public class FollowPlanController {
         Page<FollowPlan> pa = PageHelper.startPage(page, limit);
         List<FollowPlan>  list= followPlanService.selectAll();
         long total=pa.getTotal();
-        // BeanUtils.copyProperties(list.get(i),voss1);
+
         Map<String, Object> map=new HashMap<String, Object>();
         map.put("list", list);
         map.put("total", total);
@@ -49,5 +49,31 @@ public class FollowPlanController {
     public void deletePlan(@PathVariable int planId){
         followPlanService.deletePlan(planId);
     }
+
+    //资源获取
+    @GetMapping("/get/{resourcesId}")
+    public RestContent getPlan(@PathVariable int resourcesId){
+        return returnContent.getContent(followPlanService.getResources(resourcesId),"数据获取成功","数据获取失败");
+    }
+//    //获得关联资源
+//    @GetMapping("/getresou/{resou}")
+//    public RestContent getPlansou(@PathVariable String resou){
+//        return returnContent.getContent(followPlanService.getResourcesName(resou),"数据获取成功","数据获取失败");
+//    }
+
+    //客户资源
+    @GetMapping("/getCustomer/{rid}")
+    public RestContent getPlanCustomer(@PathVariable int rid){
+        return returnContent.getContent(followPlanService.getCustomerById(rid),"数据获取成功","数据获取失败");
+    }
+
+    //新建跟进计划
+    @GetMapping("/addPlan")
+    public RestContent addPlan(FollowPlan followPlan){
+        return returnContent.getContent(followPlanService.addPlan(followPlan),"数据获取成功","数据获取失败");
+    }
+
+
+
 
 }
