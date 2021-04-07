@@ -1,0 +1,19 @@
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.crm.dao.yyl.LinkmanDao">
+    <!--查询所有联系人-->
+    <select id="linkman_select" resultType="java.util.Map">
+        SELECT * FROM linkman li LEFT JOIN staff st ON li.staff_id=st.staff_id LEFT JOIN customer cu ON li.cu_id=cu.cu_id ORDER BY li.li_id DESC
+    </select>
+    <!--查询联系人名称-->
+    <select id="linkman_name" resultType="java.util.Map">
+        SELECT * FROM linkman li LEFT JOIN staff st ON li.staff_id=st.staff_id LEFT JOIN customer cu ON li.cu_id=cu.cu_id WHERE li.li_name LIKE'%${liName}%' ORDER BY li.li_id DESC
+    </select>
+    <!--新增-->
+    <insert id="linkman_increased">
+        INSERT INTO linkman VALUES(null,#{liName},#{staffId},#{cuId},#{liPhone},#{liSex},#{liDepartment},#{liPost},#{liSite},sysdate())
+    </insert>
+    <!--修改-->
+    <update id="linkman_amend">
+        UPDATE linkman SET li_name='${liName}',li_phone='${liPhone}',li_sex='${liSex}',li_department='${liDepartment}',li_post='${liPost}',li_site='${liSite}' WHERE li_id=4
+    </update>
+</mapper>

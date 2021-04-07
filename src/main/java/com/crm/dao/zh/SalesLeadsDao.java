@@ -15,4 +15,8 @@ public interface SalesLeadsDao {
     public boolean addSalesLead(SalesLeads salesLeads);
     //修改销售机会信息
     public boolean updateSalesLead(SalesLeads salesLeads);
+
+    //根据年份查询所有机会
+    List<SalesLeadsVo> jhall(String year);
+
 }

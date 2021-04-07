@@ -39,9 +39,9 @@ public class ActivtiyController {
     }
     //高级查询
     @RequestMapping("/activity_actCost")
-    public RestContent actCost(String acStarttime, String acStarttimes, String acType, Integer acState){
+    public RestContent actCost(String acStarttime, String acStarttimes, String acType, Integer acState,String acName){
 
-        return returnContent.getContent(activityService.actCost(acStarttime, acStarttimes, acType, acState),"数据获取成功","数据获取失败");
+        return returnContent.getContent(activityService.actCost(acStarttime, acStarttimes, acType, acState,acName),"数据获取成功","数据获取失败");
     }
     //新增
     @RequestMapping("/activity_add")

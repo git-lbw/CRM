@@ -44,9 +44,10 @@ public class ClueController {
 
     //线索高级查询
     @RequestMapping("/clue_actCost")
-    public RestContent clue_actCost(String clTime,String clTimes,String clFollow,String clSource,String clHigh,Integer clState){
+    public RestContent clue_actCost(String clTime,String clTimes,String clFollow,String clSource,
+                                    String clHigh,Integer clState,String clName){
 
-        return returnContent.getContent(clueService.clue_actCost(clTime, clTimes, clFollow, clSource, clHigh, clState),"数据获取成功","数据获取失败");
+        return returnContent.getContent(clueService.clue_actCost(clTime, clTimes, clFollow, clSource, clHigh, clState,clName),"数据获取成功","数据获取失败");
     }
 
     //线索新增

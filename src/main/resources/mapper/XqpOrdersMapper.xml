@@ -14,6 +14,38 @@
            select DISTINCT year(re_date) from record
         </select>
 
+        <select id="getkhyear" resultType="java.lang.String">
+          	select DISTINCT year(cu_time) from customer
+        </select>
+
+         <select id="getddyear" resultType="java.lang.String">
+          		select DISTINCT year(fixture_date) from orders
+        </select>
+
+        <select id="getxsyear" resultType="java.lang.String">
+		    select DISTINCT year(cl_time) from clue
+        </select>
+
+        <select id="gettopyear" resultType="java.lang.String">
+		    select DISTINCT year(cu_time) from customer
+        </select>
+
+         <select id="gethtyear" resultType="java.lang.String">
+		    select DISTINCT year(create_time) from contract
+        </select>
+
+         <select id="getldyear" resultType="java.lang.String">
+	        select DISTINCT year(create_time) from sales_leads
+        </select>
+
+        <select id="getcpxsyear" resultType="java.lang.String">
+	            select DISTINCT year(fixture_date) from orders
+        </select>
+
+         <select id="getjhyear" resultType="java.lang.String">
+            select DISTINCT year(create_time) from sales_leads
+        </select>
+
 
 
 </mapper>

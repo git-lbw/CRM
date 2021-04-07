@@ -12,4 +12,7 @@ public interface SalesLeadsService {
     public boolean addSalesLead(SalesLeads salesLeads);
     //修改销售机会信息
     public boolean updateSalesLead(SalesLeads salesLeads);
+    //根据年份查询所有机会
+    public List<SalesLeadsVo> jhall(String year) ;
+
 }
