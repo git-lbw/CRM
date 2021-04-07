@@ -22,6 +22,10 @@ public class ImpStaffService implements StaffService {
     public List<Staff> getAllStaff() {
         return staffDao.getAllStaff();
     }
+    @Override
+    public Staff staffLogin(String account, String password) {
+        return staffDao.staffLogin(account, password);
+    }
 
 
 }

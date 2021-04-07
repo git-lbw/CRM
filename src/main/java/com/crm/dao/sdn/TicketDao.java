@@ -13,11 +13,11 @@ import java.util.List;
 @Repository
 public interface TicketDao {
     //查询开票
-    List<TicketVo> findAllTicket(Integer kId);
+    List<TicketVo> findAllTicket(String kId);
 
     //查询开票记录
-    List<TicketVo> findTicketJL(Integer kId);
+    List<TicketVo> findTicketJL(String kId);
 
     //办理开票，修改票据状态
-   /* void updateKState(TicketVo ticketVo);*/
+    void updateKState(String kId);
 }

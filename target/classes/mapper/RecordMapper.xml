@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.crm.dao.sdn.RecordDao">
+    <resultMap id="r" type="com.crm.entities.Record">
+        <id column="re_id" property="reId"></id>
+        <result column="re_beenm" property="reBeenm"></result>
+        <result column="re_money" property="reMoney"></result>
+        <result column="re_periods" property="rePeriods"></result>
+        <result column="re_date" property="reDate"></result>
+    </resultMap>
+
+    <!--查询记录-->
+    <select id="findAllRecord" resultType="com.crm.vo.sdn.RecordVo">
+    select * from record re left join returns ru on ru.r_id=re.r_id left join contract ct on ct.contract_id=ru.contract_id
+    left join customer cu on cu.cu_id=ru.cu_id left join staff st on st.staff_id=ru.staff_id where ct.contract_Name like '%${contractName}%'
+    order by re_date desc
+    </select>
+
+    <!--查询所有计划-->
+    <select id="findReturns" resultType="com.crm.vo.sdn.RecordVo">
+    select * from returns r left join customer cu on cu.cu_id=r.cu_id left join contract c on c.contract_id=r.contract_id left join staff st on
+    st.staff_id=c.staff_id
+    </select>
+
+    <!--新增记录-->
+    <insert id="saveRecord">
+        insert into record values(#{reId},#{staffId},#{rId},#{contractId},#{reBeenm},#{reMoney},#{rePeriods},#{reDate})
+    </insert>
+
+    <!--修改回款计划中的已回期数、已回金额-->
+    <update id="updateReturn">
+        update returns set r_beenp=r_beenp+1,r_beenm=r_beenm+#{rmoney} where r_id=#{rId}
+    </update>
+
+    <!--修改回款计划中的回款状态-->
+    <update id="updateReturnState">
+        update returns set r_state=1 where r_id=#{rId}
+    </update>
+
+</mapper>

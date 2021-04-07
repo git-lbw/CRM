@@ -1,0 +1,18 @@
+server:
+  port: 8001
+
+spring:
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://106.14.150.182/crm?useUnicode=true&characterEncoding=UTF-8&useSSL=false&serverTimezone=GMT%2B8
+    username: root
+    password: Lqm123456@
+
+mybatis:
+  mapper-locations: classpath:/mapper/*.xml
+  type-aliases-package: com.crm.entities
+  configuration:
+    call-setters-on-nulls: true
+    map-underscore-to-camel-case: true
+    default-statement-timeout: 10000

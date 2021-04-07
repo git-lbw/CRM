@@ -14,6 +14,10 @@ import java.util.Map;
 public class CustomerService {
     @Autowired
     CustomerDao customerDao;
+    //查询客户和客户公海
+    public List<Customer> customer_all(){
+        return customerDao.customer_all();
+    }
     //查询所有
     public List<Map<String,Object>> customer_select(){
         return customerDao.customer_select();
@@ -31,8 +35,9 @@ public class CustomerService {
         return customerDao.customer_hightname(cuNames);
     }
     //高级查询客户
-    public List<Map<String,Object>> customer_advanced(String cuTime,String cuTimes,String cuState,String cuSource,String cuHigh,String cuRank){
-        return customerDao.customer_advanced(cuTime, cuTimes, cuState, cuSource, cuHigh, cuRank);
+    public List<Map<String,Object>> customer_advanced(String cuTime,String cuTimes,String cuState,String cuSource,
+                                                      String cuHigh,String cuRank,String cuName){
+        return customerDao.customer_advanced(cuTime, cuTimes, cuState, cuSource, cuHigh, cuRank,cuName);
     }
     //客户新增
     public void cutomer_insert(Customer customer){
@@ -50,5 +55,14 @@ public class CustomerService {
     //重新分配负责人
     public void cutomer_allocation(Integer staffId,Integer cuId){
         customerDao.cutomer_allocation(staffId, cuId);
+    }
+
+    //查询客户编号
+    public Customer customer_num(Integer cuId){
+        return customerDao.customer_num(cuId);
+    }
+
+    public List<Map<Object,String>> khall(String year){
+        return customerDao.khall(year);
     }
 }

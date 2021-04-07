@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.crm.dao.lqm.StaffDao">
+    <resultMap id="StaffResultMap" type="com.crm.entities.Staff">
+        <id column="staff_id" property="staffName" />
+        <result column="staff_name" property="staffName" />
+        <result column="staff_account" property="staffAccount" />
+        <result column="staff_password" property="staffPassword" />
+        <result column="staff_phone" property="staffPhone" />
+    </resultMap>
+
+<!--    <select id="getStaffById" parameterType="Integer" resultMap="StaffResultMap">-->
+<!--        select * from staff where staff_id=#{id}-->
+<!--    </select>-->
+
+</mapper>

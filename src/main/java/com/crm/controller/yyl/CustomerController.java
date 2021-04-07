@@ -8,6 +8,7 @@ import com.crm.service.yyl.PrincipallService;
 import com.crm.utils.RestContent;
 import com.crm.utils.ReturnContent;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -19,6 +20,11 @@ public class CustomerController {
     PrincipallService pr;
     @Autowired
     private ReturnContent returnContent;
+    //查询客户和客户公海
+    @RequestMapping("/customer_all")
+    public RestContent customer_all(){
+        return returnContent.getContent(customerService.customer_all(),"数据获取成功","数据获取失败");
+    }
     //查询客户所有
     @RequestMapping("/Customer_select")
     public RestContent customer_select(){
@@ -41,8 +47,9 @@ public class CustomerController {
     }
     //高级查询客户
     @RequestMapping("/customer_advanced")
-    public RestContent customer_advanced(String cuTime,String cuTimes,String cuState,String cuSource,String cuHigh,String cuRank){
-        return returnContent.getContent(customerService.customer_advanced(cuTime, cuTimes, cuState, cuSource, cuHigh, cuRank),"数据获取成功","数据获取失败");
+    public RestContent customer_advanced(String cuTime,String cuTimes,String cuState,String cuSource,
+                                         String cuHigh,String cuRank,String cuName){
+        return returnContent.getContent(customerService.customer_advanced(cuTime, cuTimes, cuState, cuSource, cuHigh, cuRank,cuName),"数据获取成功","数据获取失败");
     }
     //新增客户
     @RequestMapping("/cutomer_insert")
@@ -63,5 +70,10 @@ public class CustomerController {
     @RequestMapping("/cutomer_allocation")
     public void cutomer_allocation(Integer staffId,Integer cuId){
         customerService.cutomer_allocation(staffId, cuId);
+    }
+    //查询客户编号
+    @RequestMapping("/customer_num")
+    public RestContent customer_num(Integer cuId){
+        return returnContent.getContent(customerService.customer_num(cuId),"数据获取成功","数据获取失败");
     }
 }
