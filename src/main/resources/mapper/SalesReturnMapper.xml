@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.crm.dao.zh.SalesReturnDao">
+
+    <resultMap id="SalesReturnResultMap" type="com.crm.vo.zh.SalesReturnVo">
+        <id column="sales_return_id" property="salesReturnId" />
+        <result column="sales_return_name" property="salesReturnName" />
+        <result column="order_id" property="orderId" />
+        <result column="order_name" property="orderName" />
+        <result column="order_money" property="orderMoney" />
+        <result column="staff_id" property="staffId" />
+        <result column="staff_name" property="staffName" />
+        <result column="cu_id" property="cuId" />
+        <result column="cu_name" property="cuName" />
+        <result column="sales_return_date" property="salesReturnDate" />
+        <result column="sales_returns_cause" property="salesReturnsCause" />
+        <result column="create_time" property="createTime" />
+        <result column="update_time" property="updateTime" />
+        <result column="operator" property="operator" />
+        <result column="notes" property="notes" />
+    </resultMap>
+
+    <select id="getSalesReturnAll" resultMap="SalesReturnResultMap">
+        select * from sales_return as sr,orders as od,staff as st,customer as cu where
+        sr.order_id=od.order_id and od.staff_id=st.staff_id and od.cu_id=cu.cu_id
+    </select>
+
+    <update id="updateSalesReturn" parameterType="com.crm.entities.SalesReturn">
+        update sales_return set sales_return_name=#{salesReturnName},sales_return_date=#{salesReturnDate},
+        sales_returns_cause=#{salesReturnsCause},update_time=#{updateTime},operator=#{operator},
+        notes=#{notes} where sales_return_id=#{salesReturnId}
+    </update>
+</mapper>

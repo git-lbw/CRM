@@ -25,7 +25,8 @@ public interface ClueDao {
                                                  @Param("clFollow") String clFollow,
                                                  @Param("clSource") String clSource,
                                                  @Param("clHigh") String clHigh,
-                                                 @Param("clState") Integer clState);
+                                                 @Param("clState") Integer clState,
+                                                 @Param("clName") String clName);
     //线索新增
     public void clue_newly(Clue clue);
     //线索修改

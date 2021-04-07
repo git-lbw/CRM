@@ -1,6 +1,7 @@
 package com.crm.service.zh.impl;
 
 import com.crm.dao.zh.OrdersDao;
+import com.crm.entities.Orders;
 import com.crm.service.zh.OrdersService;
 import com.crm.vo.zh.OrdersVo;
 import org.springframework.stereotype.Service;
@@ -22,4 +23,24 @@ public class ImplOrdersService implements OrdersService {
     public List<OrdersVo> getOrderBySalesLeadsId(Integer salesLeadsId) {
         return ordersDao.getOrderBySalesLeadsId(salesLeadsId);
     }
+
+    @Override
+    public Orders getOrderByOrderId(Integer orderId) {
+        return ordersDao.getOrderByOrderId(orderId);
+    }
+
+    @Override
+    public Boolean updateOrder(Orders orders) {
+        return ordersDao.updateOrder(orders);
+    }
+
+    public List<OrdersVo> orderssall(String year){
+        return ordersDao.orderssall(year);
+    }
+
+    public List<String> getkhyear(){
+        return ordersDao.getkhyear();
+    }
+
+
 }

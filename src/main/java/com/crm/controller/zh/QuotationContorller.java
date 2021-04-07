@@ -57,4 +57,12 @@ public class QuotationContorller {
         List<QuotationVo> quotationVos = quotationService.getQuotationAll();
         return returnContent.getContent(quotationVos,"数据获取成功","数据获取失败");
     }
+
+    @GetMapping("/delQuotation")//删除退货单
+    public RestContent delQuotation(Integer quotationId) {
+        boolean delresult=quotationService.delQuotation(quotationId);
+        log.info("结果"+delresult);
+        List<QuotationVo> quotationVos = quotationService.getQuotationAll();
+        return returnContent.getContent(quotationVos,"数据获取成功","数据获取失败");
+    }
 }

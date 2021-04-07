@@ -34,4 +34,9 @@
         cu_id=#{cuId},estimated_amount=#{estimatedAmount},sales_state=#{salesState},update_time=#{updateTime},
         operator=#{operator},notes=#{notes} where sales_leads_id=#{salesLeadsId}
     </update>
+
+    <select id="jhall" resultMap="SalesLeadsResultMap">
+         select * from sales_leads as sa,staff as st,customer as cu
+        where sa.staff_id=st.staff_id and sa.cu_id=cu.cu_id and year(sa.create_time)=#{year}
+    </select>
 </mapper>

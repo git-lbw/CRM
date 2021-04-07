@@ -24,8 +24,8 @@ public class ActivityService {
         return activityDao.vague(acName);
     }
     //高级查询
-    public List<Map<String,Object>> actCost(String acStarttime,String acStarttimes,String acType,Integer acState){
-        return activityDao.actCost(acStarttime, acStarttimes, acType, acState);
+    public List<Map<String,Object>> actCost(String acStarttime,String acStarttimes,String acType,Integer acState,String acName){
+        return activityDao.actCost(acStarttime, acStarttimes, acType, acState,acName);
     }
     //新增
     public void add(Activity activity){
