@@ -15,7 +15,7 @@ public class WarehouseFlowVo {
     private String productunitNeme;
     private String inventoryactionName;
     private java.sql.Date receiptdeliveryData;
-    private Integer otalquantity;
+    private Integer inoutQuantity;
     private String orderName;
     private String staffName;
 }

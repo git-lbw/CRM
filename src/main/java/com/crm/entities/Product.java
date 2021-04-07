@@ -2,7 +2,9 @@ package com.crm.entities;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import java.sql.Timestamp;
+import org.springframework.format.annotation.DateTimeFormat;
+
+import java.util.Date;
 
 @Data
 @AllArgsConstructor
@@ -19,9 +21,10 @@ public class Product {
   private Integer lockInventory;
   private String productModel;
   private String productDescription;
-  private java.sql.Date productCreationtime;
+  @DateTimeFormat(pattern = "yyyy-MM-dd")
+  private java.util.Date productCreationtime;
   private Integer productclassificationId;
-  private double productPrice;
+  private Double productPrice;
 
 
   public Integer getProductId() {
@@ -114,14 +117,13 @@ public class Product {
   }
 
 
-  public java.sql.Date getProductCreationtime() {
+  public Date getProductCreationtime() {
     return productCreationtime;
   }
 
-  public void setProductCreationtime(java.sql.Date productCreationtime) {
+  public void setProductCreationtime(Date productCreationtime) {
     this.productCreationtime = productCreationtime;
   }
-
 
   public Integer getProductclassificationId() {
     return productclassificationId;
@@ -132,12 +134,11 @@ public class Product {
   }
 
 
-  public double getProductPrice() {
+  public Double getProductPrice() {
     return productPrice;
   }
 
-  public void setProductPrice(double productPrice) {
+  public void setProductPrice(Double productPrice) {
     this.productPrice = productPrice;
   }
-
 }

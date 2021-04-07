@@ -1,6 +1,8 @@
 package com.crm.controller.thf;
 
 import com.crm.service.thf.WarehouseFlowService;
+import com.crm.service.thf.impl.ImpWarehouseFlowService;
+import com.crm.vo.thf.InsertReceiptDeliveryVo;
 import com.crm.vo.thf.WarehouseFlowVo;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,11 +18,11 @@ import java.util.List;
 @RequestMapping("/wareHouseInAndOutFlowController")
 public class WareHouseInAndOutFlowController {
     @Autowired
-    private WarehouseFlowService warehouseFlowService;
+    private ImpWarehouseFlowService impWarehouseFlowService;
 
-    @GetMapping("findAllWarehouseFlow")
+    @GetMapping("/findAllWarehouseFlow")
     public @ResponseBody
-    List<WarehouseFlowVo> findAllWarehouseFlow(){
-        return warehouseFlowService.findAllWarehouseFlowVo();
+    List<WarehouseFlowVo> findAllWarehouseFlow(InsertReceiptDeliveryVo insertReceiptDeliveryVo){
+        return impWarehouseFlowService.findAllWarehouseFlowVo();
     }
 }

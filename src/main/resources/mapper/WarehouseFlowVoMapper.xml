@@ -9,20 +9,20 @@
         <result column="productunit_neme" property="productunitNeme"/>
         <result column="inventoryaction_name" property="inventoryactionName"/>
         <result column="receiptdelivery_data" property="receiptdeliveryData"/>
-        <result column="otalquantity" property="otalquantity"/>
+        <result column="inout_quantity" property="inoutQuantity"/>
         <result column="order_name" property="orderName"/>
         <result column="staff_name" property="staffName"/>
     </resultMap>
     <!--查询所有出入库流水信息-->
     <select id="findAllWarehouseFlowVo" resultMap="WarehouseFlowVoMapper">
-        SELECT a.*,b.receiptdelivery_name,c.inventoryaction_name,d.product_name,e.productclassification_name,f.productunit_neme,h.order_name,i.staff_name from warehouseinandoutflow a
-           LEFT JOIN receiptdelivery b on a.receiptdelivery_id = b.receiptdelivery_id
-           LEFT JOIN inventoryaction c on b.inventoryaction_id = c.inventoryaction_id
-           LEFT JOIN product d on a.product_id = d.product_id
-           LEFT JOIN productclassification e on d.productclassification_id = e.productclassification_id
-           LEFT JOIN productunit f on d.productunit_id = f.productunit_id
-           LEFT JOIN order_details g on a.order_id = g.order_id
-           LEFT JOIN orders h on g.order_id = h.order_id
-           LEFT JOIN staff i on a.staff_id = i.staff_id
+        SELECT a.*,b.receiptdelivery_data,b.receiptdelivery_name,c.inventoryaction_name,d.product_name,e.productclassification_name,f.productunit_neme,h.order_name,i.staff_name from warehouseinandoutflow a
+                LEFT JOIN receiptdelivery b on a.receiptdelivery_id = b.receiptdelivery_id
+                LEFT JOIN inventoryaction c on b.inventoryaction_id = c.inventoryaction_id
+                LEFT JOIN product d on a.product_id = d.product_id
+                LEFT JOIN productclassification e on d.productclassification_id = e.productclassification_id
+                LEFT JOIN productunit f on d.productunit_id = f.productunit_id
+                LEFT JOIN order_details g on b.order_id = g.order_id
+                LEFT JOIN orders h on g.order_id = h.order_id
+                LEFT JOIN staff i on b.staff_id = i.staff_id
     </select>
 </mapper>

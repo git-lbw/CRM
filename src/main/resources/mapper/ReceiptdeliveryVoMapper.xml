@@ -5,10 +5,11 @@
         <id column="receiptdelivery_id" property="receiptdeliveryId"/>
         <result column="receiptdelivery_name" property="receiptdeliveryName"/>
         <result column="inventoryaction_name" property="inventoryactionName"/>
-        <result column="otalquantity" property="otalquantity"/>
-        <result column="launchmode" property="launchmode"/>
+        <result column="otal_quantity" property="otalquantity"/>
         <result column="staff_name" property="staffName"/>
         <result column="receiptdelivery_data" property="receiptdeliveryData"/>
+        <result column="product_name" property="productName"/>
+        <result column="order_name" property="orderName"/>
     </resultMap>
     <!--查询所有出入库单信息-->
     <select id="findAllReceiptdeliveryVo" resultMap="ReceiptdeliveryVoMapper">

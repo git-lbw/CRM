@@ -2,7 +2,9 @@ package com.crm.entities;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import java.sql.Timestamp;
+
+import java.util.Date;
+
 
 @Data
 @AllArgsConstructor
@@ -12,10 +14,10 @@ public class Receiptdelivery {
   private Integer receiptdeliveryId;
   private String receiptdeliveryName;
   private Integer otalquantity;
-  private String launchmode;
   private Integer staffId;
-  private java.sql.Date receiptdeliveryData;
+  private java.util.Date receiptdeliveryData;
   private Integer inventoryactionId;
+  private Integer orderId;
 
   public Integer getReceiptdeliveryId() {
     return receiptdeliveryId;
@@ -25,7 +27,6 @@ public class Receiptdelivery {
     this.receiptdeliveryId = receiptdeliveryId;
   }
 
-
   public String getReceiptdeliveryName() {
     return receiptdeliveryName;
   }
@@ -33,7 +34,6 @@ public class Receiptdelivery {
   public void setReceiptdeliveryName(String receiptdeliveryName) {
     this.receiptdeliveryName = receiptdeliveryName;
   }
-
 
   public Integer getOtalquantity() {
     return otalquantity;
@@ -43,16 +43,6 @@ public class Receiptdelivery {
     this.otalquantity = otalquantity;
   }
 
-
-  public String getLaunchmode() {
-    return launchmode;
-  }
-
-  public void setLaunchmode(String launchmode) {
-    this.launchmode = launchmode;
-  }
-
-
   public Integer getStaffId() {
     return staffId;
   }
@@ -61,12 +51,11 @@ public class Receiptdelivery {
     this.staffId = staffId;
   }
 
-
-  public java.sql.Date getReceiptdeliveryData() {
+  public Date getReceiptdeliveryData() {
     return receiptdeliveryData;
   }
 
-  public void setReceiptdeliveryData(java.sql.Date receiptdeliveryData) {
+  public void setReceiptdeliveryData(Date receiptdeliveryData) {
     this.receiptdeliveryData = receiptdeliveryData;
   }
 
@@ -76,5 +65,13 @@ public class Receiptdelivery {
 
   public void setInventoryactionId(Integer inventoryactionId) {
     this.inventoryactionId = inventoryactionId;
+  }
+
+  public Integer getOrderId() {
+    return orderId;
+  }
+
+  public void setOrderId(Integer orderId) {
+    this.orderId = orderId;
   }
 }

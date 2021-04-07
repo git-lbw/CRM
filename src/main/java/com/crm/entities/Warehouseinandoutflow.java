@@ -2,23 +2,15 @@ package com.crm.entities;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import java.sql.Timestamp;
 
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 public class Warehouseinandoutflow {
-
   private Integer receiptdeliveryflowingwaterId;
-  private Integer inventoryactionId;
-  private Integer receiptdeliveryId;
   private Integer productId;
-  private java.sql.Date receiptdeliveryData;
-  private Integer otalquantity;
-  private String launchmode;
-  private Integer orderId;
-  private Integer staffId;
-
+  private Integer receiptdeliveryId;
+  private Integer inoutQuantity;
 
   public Integer getReceiptdeliveryflowingwaterId() {
     return receiptdeliveryflowingwaterId;
@@ -28,15 +20,13 @@ public class Warehouseinandoutflow {
     this.receiptdeliveryflowingwaterId = receiptdeliveryflowingwaterId;
   }
 
-
-  public Integer getInventoryactionId() {
-    return inventoryactionId;
+  public Integer getProductId() {
+    return productId;
   }
 
-  public void setInventoryactionId(Integer inventoryactionId) {
-    this.inventoryactionId = inventoryactionId;
+  public void setProductId(Integer productId) {
+    this.productId = productId;
   }
-
 
   public Integer getReceiptdeliveryId() {
     return receiptdeliveryId;
@@ -46,58 +36,11 @@ public class Warehouseinandoutflow {
     this.receiptdeliveryId = receiptdeliveryId;
   }
 
-
-  public Integer getProductId() {
-    return productId;
+  public Integer getInoutQuantity() {
+    return inoutQuantity;
   }
 
-  public void setProductId(Integer productId) {
-    this.productId = productId;
+  public void setInoutQuantity(Integer inoutQuantity) {
+    this.inoutQuantity = inoutQuantity;
   }
-
-
-  public java.sql.Date getReceiptdeliveryData() {
-    return receiptdeliveryData;
-  }
-
-  public void setReceiptdeliveryData(java.sql.Date receiptdeliveryData) {
-    this.receiptdeliveryData = receiptdeliveryData;
-  }
-
-
-  public Integer getOtalquantity() {
-    return otalquantity;
-  }
-
-  public void setOtalquantity(Integer otalquantity) {
-    this.otalquantity = otalquantity;
-  }
-
-
-  public String getLaunchmode() {
-    return launchmode;
-  }
-
-  public void setLaunchmode(String launchmode) {
-    this.launchmode = launchmode;
-  }
-
-
-  public Integer getOrderId() {
-    return orderId;
-  }
-
-  public void setOrderId(Integer orderId) {
-    this.orderId = orderId;
-  }
-
-
-  public Integer getStaffId() {
-    return staffId;
-  }
-
-  public void setStaffId(Integer staffId) {
-    this.staffId = staffId;
-  }
-
 }
