@@ -1,5 +1,6 @@
 package com.crm.controller.zh;
 
+import com.crm.entities.Contract;
 import com.crm.entities.Orders;
 import com.crm.service.zh.impl.ImplContractService;
 import com.crm.service.zh.impl.ImplOrdersService;
@@ -36,12 +37,11 @@ public class ContractContorller {
 
     @GetMapping("/addContract") //新增销售合同
     public RestContent addContract(ContractVo contractVo) {
-        Orders orders=ordersService.getOrderByOrderId(contractVo.getOrderId());
-        contractVo.setContractMoney(orders.getOrderMoney());
+        contractVo.setContractMoney(0);
         contractVo.setCreateTime(new Timestamp(new Date().getTime()));
         contractVo.setContractState("未开始");
-        Boolean contractresult = contractService.addContract(contractVo);
-        log.info("结果"+contractresult);
+        boolean addresult = contractService.addContract(contractVo);
+        log.info("结果"+addresult);
         List<ContractVo> contractVos = contractService.getContractAll();
         return returnContent.getContent(contractVos,"数据获取成功","数据获取失败");
     }

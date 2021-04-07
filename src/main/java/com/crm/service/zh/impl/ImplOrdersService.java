@@ -29,6 +29,11 @@ public class ImplOrdersService implements OrdersService {
         return ordersDao.getOrderByOrderId(orderId);
     }
 
+    @Override
+    public Boolean updateOrder(Orders orders) {
+        return ordersDao.updateOrder(orders);
+    }
+
     public List<OrdersVo> orderssall(String year){
         return ordersDao.orderssall(year);
     }

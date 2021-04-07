@@ -21,6 +21,6 @@
 
     <!--办理开票 修改票据的状态-->
     <update id="updateKState">
-        update ticket set k_state=1 where k_id=0
+        update ticket set k_state=1 where k_id=#{kId}
     </update>
 </mapper>

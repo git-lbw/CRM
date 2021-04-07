@@ -9,20 +9,19 @@ import java.sql.Timestamp;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class ContractVo {
+public class SalesReturnVo {
 
-    private Integer contractId;
-    private String contractName;
+    private Integer salesReturnId;
+    private String salesReturnName;
+    private Integer orderId;
+    private String orderName;
+    private double orderMoney;
     private Integer staffId;
     private String staffName;
     private Integer cuId;
     private String cuName;
-    private double contractMoney;
-    private java.sql.Date startDate;
-    private java.sql.Date endDate;
-    private Integer returnedNumber;
-    private Integer billingState;
-    private String contractState;
+    private java.sql.Date salesReturnDate;
+    private String salesReturnsCause;
     private Timestamp createTime;
     private Timestamp updateTime;
     private String operator;

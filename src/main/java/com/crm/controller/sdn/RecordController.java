@@ -29,15 +29,15 @@ public class RecordController {
     RecordService recordService;
 
     //查询所有回款记录
-   @GetMapping("/findAllrecords")
+    @GetMapping("/findAllrecords")
     public RestContent findAllRecord(Integer pageNum,Integer size,String contractName){
-       Map<String,Object> map=new HashMap<String, Object>();
-       Page<Object> page= PageHelper.startPage(pageNum,size);
-       List<RecordVo> record=recordService.findAllRecord(contractName);
-       map.put("rows",record);
-       map.put("total",page.getTotal());
-       return returnContent.getContent(map,"查询成功！","查询失败");
-   }
+        Map<String,Object> map=new HashMap<String, Object>();
+        Page<Object> page= PageHelper.startPage(pageNum,size);
+        List<RecordVo> record=recordService.findAllRecord(contractName);
+        map.put("rows",record);
+        map.put("total",page.getTotal());
+        return returnContent.getContent(map,"查询成功！","查询失败");
+    }
 
     //查询所有回款计划
     @GetMapping("/findreturn")
@@ -47,12 +47,12 @@ public class RecordController {
     }
 
     //新增回款记录
-   @RequestMapping("/saveRecords")
+    @RequestMapping("/saveRecords")
     public void saveRecord(String huikuan){
-       RecordVo re = JSONObject.toJavaObject(JSON.parseObject(huikuan),RecordVo.class);
-       recordService.saveRecord(re);
+        RecordVo re = JSONObject.toJavaObject(JSON.parseObject(huikuan),RecordVo.class);
+        recordService.saveRecord(re);
 
-   }
+    }
 
 
 

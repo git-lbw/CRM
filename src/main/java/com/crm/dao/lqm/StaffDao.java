@@ -11,7 +11,7 @@ import java.util.List;
 @Mapper
 public interface StaffDao {
     /**
-     * 根据员工id查询员工
+     * 根据id查询员工
      * @param id
      * @return
      */
@@ -24,6 +24,7 @@ public interface StaffDao {
      */
     @Select("select * from staff")
     public List<Staff> getAllStaff();
+
 
     /**
      * 员工登录

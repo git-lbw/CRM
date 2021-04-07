@@ -6,17 +6,17 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.format.annotation.DateTimeFormat;
 
-import java.sql.Date;
+
+import java.sql.Timestamp;
+import java.util.Date;
 
 @Data
-@AllArgsConstructor
-@NoArgsConstructor
 public class TicketVo {
-    private Integer kId;
+    private String kId;
     private Integer staffId;
     private String reId;
     private double kMoney;
-    private Date kDate;
+    private Timestamp kDate;
     private String staffName;
     private Integer kState;
 
@@ -41,11 +41,11 @@ public class TicketVo {
     private Date cuTime;
     private String cuSource;
 
-    public Integer getkId() {
+    public String getkId() {
         return kId;
     }
 
-    public void setkId(Integer kId) {
+    public void setkId(String kId) {
         this.kId = kId;
     }
 
@@ -72,15 +72,18 @@ public class TicketVo {
     public void setkMoney(double kMoney) {
         this.kMoney = kMoney;
     }
-    @DateTimeFormat(pattern = "yyyy-MM-dd")
-    @JsonFormat(pattern = "yyyy-MM-dd", timezone = "GMT+8")
-    public Date getkDate() {
+
+    public Timestamp getkDate() {
         return kDate;
     }
 
-    public void setkDate(Date kDate) {
+    public void setkDate(Timestamp kDate) {
         this.kDate = kDate;
     }
+
+/*    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    @JsonFormat(pattern = "yyyy-MM-dd", timezone = "GMT+8")*/
+
 
     public String getStaffName() {
         return staffName;
@@ -232,5 +235,18 @@ public class TicketVo {
 
     public void setCuSource(String cuSource) {
         this.cuSource = cuSource;
+    }
+
+    public TicketVo(String kId, Integer staffId, String reId, Timestamp kDate, Integer kState, double reMoney, Integer cuId) {
+        this.kId = kId;
+        this.staffId = staffId;
+        this.reId = reId;
+        this.kDate = kDate;
+        this.kState = kState;
+        this.reMoney = reMoney;
+        this.cuId = cuId;
+    }
+
+    public TicketVo() {
     }
 }

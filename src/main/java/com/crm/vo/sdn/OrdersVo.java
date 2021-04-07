@@ -18,8 +18,8 @@ public class OrdersVo {
     private Integer staffId;
     private Integer cuId;
     private double contractMoney;
-    private Date startDate;
-    private Date endDate;
+    private java.sql.Date startDate;
+    private java.sql.Date endDate;
     private Integer returnedNumber;
     private Integer billingState;
     private String contractState;
@@ -27,19 +27,46 @@ public class OrdersVo {
     private Timestamp updateTime;
     private String operator;
     private String notes;
-
+    private String orderName;
     private String cuName;
     private String cuHigh;
     private String cuRank;
     private String cuState;
     private Integer cuMake;
-    private Date cuTime;
+    private java.sql.Date cuTime;
     private String cuSource;
 
     private String staffName;
     private String staffAccount;
     private String staffPassword;
     private String staffPhone;
+
+    private String number;
+    private String type;
+
+    public String getNumber() {
+        return number;
+    }
+
+    public void setNumber(String number) {
+        this.number = number;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
+
+    public String getOrderName() {
+        return orderName;
+    }
+
+    public void setOrderName(String orderName) {
+        this.orderName = orderName;
+    }
 
     public Integer getContractId() {
         return contractId;
