@@ -102,4 +102,25 @@ public class ImpOrderssService implements OrderssService {
         return ordessDao.getjhyear();
     }
 
+    public List<Map<Object,String>> hikuai(String year){
+        return ordessDao.hikuai(year);
+    }
+
+    public List<Map<Object,Object>> top(String year){
+        return ordessDao.top(year);
+    }
+
+    public List<Map<Object,String>> hetong(String year){
+        return ordessDao.hetong(year);
+    }
+
+    public List<Map<Object,String>> xiaoshould(String year){
+        return ordessDao.xiaoshould(year);
+    }
+
+    public List<Map<Object,String>> chanping(String year){
+        return ordessDao.chanping(year);
+    }
+
+
 }

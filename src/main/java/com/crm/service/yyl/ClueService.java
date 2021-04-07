@@ -51,4 +51,8 @@ public class ClueService {
     public void clue_allocation(Integer staffId,Integer clId){
         clueDao.clue_allocation(staffId, clId);
     }
+
+    public List<Map<Object,String>> xsall(String year){
+        return clueDao.xsall(year);
+    }
 }

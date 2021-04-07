@@ -1,12 +1,8 @@
 package com.crm.controller.xqp;
 
-import com.alibaba.fastjson.JSONObject;
-import com.crm.entities.Orders;
-import com.crm.entities.Staff;
-import com.crm.service.lqm.StaffService;
+import com.crm.entities.Clue;
 import com.crm.service.xqp.OrderssService;
 import com.crm.service.zh.OrdersService;
-import com.crm.service.zh.impl.ImplOrdersService;
 import com.crm.utils.RestContent;
 import com.crm.utils.ReturnContent;
 import com.crm.vo.xqp.YearVO;
@@ -32,9 +28,15 @@ public class OrdessCorller {
     @Autowired
     private OrdersService ordersService;
 
+    @Autowired
+    private Clue clue;
+
+
+
     @GetMapping("/getmonth/{year}")
     public RestContent getmonth(@PathVariable("year") String year){
         System.out.println(year);
+        System.err.println("销售额图表");
         YearVO yearVO = orderssService.getmonth(year);
         return returnContent.getContent(yearVO,"数据获取成功","数据获取失败");
     }
@@ -147,7 +149,7 @@ public class OrdessCorller {
         Map<Long,Long> map=new HashMap<>();
         List<Map<String,Long>> arr= orderssService.cp(year);
         for (Map<String, Long> stringStringMap : arr) {
-            map.put(stringStringMap.get("order_name"),stringStringMap.get("order_money"));
+            map.put(stringStringMap.get("product_name"),stringStringMap.get("product_price"));
         }
         for (Map.Entry<Long, Long> aLong : map.entrySet()) {
             System.err.println(aLong);

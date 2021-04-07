@@ -45,4 +45,7 @@ public interface CustomerDao {
                                    @Param("cuId") Integer cuId);
     //查询客户编号
     public Customer customer_num(@Param("cuId") Integer cuId);
+
+    //根据年份查询客户
+    List<Map<Object,String>>khall (String year);
 }

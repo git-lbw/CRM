@@ -64,4 +64,10 @@
     <update id="clue_allocation">
         UPDATE clue SET staff_id=${staffId},cl_state=1 WHERE cl_id=${clId}
     </update>
+
+<!--    根据年份查询线索-->
+    <select id="xsall" resultType="java.util.HashMap">
+        SELECT * FROM clue cl LEFT JOIN staff st ON cl.staff_id=st.staff_id WHERE cl.cl_state!=0
+									and year(cl_time)=#{year}
+    </select>
 </mapper>

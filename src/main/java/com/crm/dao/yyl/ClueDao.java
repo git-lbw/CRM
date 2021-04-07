@@ -36,4 +36,6 @@ public interface ClueDao {
     //重新分配负责人
     public void clue_allocation(@Param("staffId") Integer staffId,
                                 @Param("clId") Integer clId);
+
+    List<Map<Object,String>>xsall(String year);
 }

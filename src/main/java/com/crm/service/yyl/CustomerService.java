@@ -61,4 +61,8 @@ public class CustomerService {
     public Customer customer_num(Integer cuId){
         return customerDao.customer_num(cuId);
     }
+
+    public List<Map<Object,String>> khall(String year){
+        return customerDao.khall(year);
+    }
 }
