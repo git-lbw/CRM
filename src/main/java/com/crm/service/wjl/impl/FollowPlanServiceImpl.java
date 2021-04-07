@@ -11,7 +11,7 @@ import javax.annotation.Resource;
 import java.util.List;
 
 @Service
-public class FollowPlanDaoImpl implements FollowPlanService {
+public class FollowPlanServiceImpl implements FollowPlanService {
 
     @Resource
     private FollowPlanDao followPlanService;
