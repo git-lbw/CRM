@@ -2,6 +2,8 @@ package com.crm.entities;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
+import java.sql.Date;
 import java.sql.Timestamp;
 
 @Data
@@ -12,13 +14,13 @@ public class Linkman {
   private Integer liId;
   private String liName;
   private Integer staffId;
-  private String cuId;
+  private Integer cuId;
   private String liPhone;
   private String liSex;
   private String liDepartment;
   private String liPost;
   private String liSite;
-  private java.util.Date liTime;
+  private java.sql.Date liTime;
 
 
   public Integer getLiId() {
@@ -27,15 +29,6 @@ public class Linkman {
 
   public void setLiId(Integer liId) {
     this.liId = liId;
-  }
-
-
-  public String getLiName() {
-    return liName;
-  }
-
-  public void setLiName(String liName) {
-    this.liName = liName;
   }
 
 
@@ -48,11 +41,11 @@ public class Linkman {
   }
 
 
-  public String getCuId() {
+  public Integer getCuId() {
     return cuId;
   }
 
-  public void setCuId(String cuId) {
+  public void setCuId(Integer cuId) {
     this.cuId = cuId;
   }
 
@@ -101,13 +94,19 @@ public class Linkman {
     this.liSite = liSite;
   }
 
+  public String getLiName() {
+    return liName;
+  }
 
-  public java.util.Date getLiTime() {
+  public void setLiName(String liName) {
+    this.liName = liName;
+  }
+
+  public Date getLiTime() {
     return liTime;
   }
 
-  public void setLiTime(java.util.Date liTime) {
+  public void setLiTime(Date liTime) {
     this.liTime = liTime;
   }
-
 }

@@ -39,4 +39,16 @@
         sales_leads_id=#{salesLeadsId},contract_id=#{contractId},order_state=#{orderState},
         update_time=#{updateTime},operator=#{operator},notes=#{notes} where order_id=#{orderId}
     </update>
+
+
+    <select id="orderssall" resultMap="OrdersResultMap">
+        select * from orders as od,staff as st,customer as cu where
+        od.staff_id=st.staff_id and od.cu_id=cu.cu_id and year(od.fixture_date)=#{year}
+    </select>
+
+
+
+
+
+
 </mapper>

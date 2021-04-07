@@ -33,4 +33,14 @@ public class ImplOrdersService implements OrdersService {
     public Boolean updateOrder(Orders orders) {
         return ordersDao.updateOrder(orders);
     }
+
+    public List<OrdersVo> orderssall(String year){
+        return ordersDao.orderssall(year);
+    }
+
+    public List<String> getkhyear(){
+        return ordersDao.getkhyear();
+    }
+
+
 }

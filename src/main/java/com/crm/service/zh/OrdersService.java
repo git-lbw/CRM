@@ -12,6 +12,10 @@ public interface OrdersService {
     public List<OrdersVo> getOrderBySalesLeadsId(Integer salesLeadsId);
     //根据销售订单id查询
     public Orders getOrderByOrderId(Integer orderId);
+
+    List<OrdersVo>orderssall(String year);
+
+    List<String> getkhyear();
     //修改订单
     public Boolean updateOrder(Orders orders);
 }

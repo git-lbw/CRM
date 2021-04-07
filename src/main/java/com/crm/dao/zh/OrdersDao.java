@@ -18,4 +18,10 @@ public interface OrdersDao {
     public Orders getOrderByOrderId(Integer orderId);
     //修改订单
     public Boolean updateOrder(Orders orders);
+
+    //根据年份查询
+    List<OrdersVo> orderssall(String year);
+
+    //客户数年份
+    List<String> getkhyear();
 }
