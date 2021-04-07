@@ -6,7 +6,6 @@ import com.crm.service.lqm.StaffService;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
-import java.util.List;
 
 @Service
 public class ImpStaffService implements StaffService {
@@ -16,16 +15,6 @@ public class ImpStaffService implements StaffService {
 
     public Staff getStaffById(int id) {
         return staffDao.getStaffById(id);
-    }
-
-    @Override
-    public List<Staff> getAllStaff() {
-        return staffDao.getAllStaff();
-    }
-
-    @Override
-    public Staff staffLogin(String account, String password) {
-        return staffDao.staffLogin(account, password);
     }
 
 
