@@ -1,6 +1,7 @@
 package com.crm.dao.zh;
 
 import com.crm.entities.Orders;
+
 import com.crm.vo.zh.OrdersVo;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
@@ -18,7 +19,8 @@ public interface OrdersDao {
     public Orders getOrderByOrderId(Integer orderId);
     //修改订单
     public Boolean updateOrder(Orders orders);
-
+    //根据销售合同id查询
+    public List<OrdersVo> getOrderByContractId(Integer contractId);
     //根据年份查询
     List<OrdersVo> orderssall(String year);
 

@@ -28,8 +28,14 @@
 
     <insert id="addContract" parameterType="com.crm.vo.zh.ContractVo" useGeneratedKeys="true" keyProperty="contractId">
         Insert into contract(contract_name,cu_id,staff_id,contract_money,start_date,end_date,
-        returned_number,billing_state,contract_state,create_time,update_time,operator,notes) values
+        returned_number,contract_state,create_time,update_time,operator,notes) values
         (#{contractName},#{cuId},#{staffId},#{contractMoney},#{startDate},#{endDate},#{returnedNumber},
-        #{billingState},#{contractState},#{createTime},#{createTime},#{operator},#{notes})
+        #{contractState},#{createTime},#{createTime},#{operator},#{notes})
     </insert>
+
+    <update id="updateContract" parameterType="com.crm.vo.zh.ContractVo">
+        update contract set contract_name=#{contractName},cu_id=#{cuId},staff_id=#{staffId},contract_money=#{contractMoney},
+        start_date=#{startDate},end_date=#{endDate},returned_number=#{returnedNumber},contract_state=#{contractState},
+        update_time=#{createTime},operator=#{operator},notes=#{notes} where contract_id=#{contractId}
+    </update>
 </mapper>

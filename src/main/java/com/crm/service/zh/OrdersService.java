@@ -18,4 +18,6 @@ public interface OrdersService {
     List<String> getkhyear();
     //修改订单
     public Boolean updateOrder(Orders orders);
+    //根据销售合同id查询
+    public List<OrdersVo> getOrderByContractId(Integer contractId);
 }

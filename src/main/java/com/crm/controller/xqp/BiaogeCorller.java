@@ -52,7 +52,7 @@ public class BiaogeCorller {
     //客户分页
     @GetMapping("/khall/{year}/{pageNum}/{pageSize}")
     public RestContent khall(@PathVariable("year")String year, @PathVariable("pageNum")Integer pageNum, @PathVariable("pageSize")Integer pageSize){
-        System.err.println("客户分页");
+
         Map<String,Object> map = new HashMap<>();
         Page<Object> page = PageHelper.startPage(pageNum, pageSize);
         List<Map<Object,String>> kehu = customerService.khall(year);
@@ -64,7 +64,7 @@ public class BiaogeCorller {
     //线索分页
     @GetMapping("/xsall/{year}/{pageNum}/{pageSize}")
     public RestContent xsall(@PathVariable("year")String year, @PathVariable("pageNum")Integer pageNum, @PathVariable("pageSize")Integer pageSize){
-        System.err.println("线索分页");
+
         Map<String,Object> map = new HashMap<>();
         Page<Object> page = PageHelper.startPage(pageNum, pageSize);
         List<Map<Object,String>> xiansuo = clueService.xsall(year);
@@ -76,7 +76,7 @@ public class BiaogeCorller {
     //回款分页
     @GetMapping("/hikuai/{year}/{pageNum}/{pageSize}")
     public RestContent hikuai(@PathVariable("year")String year, @PathVariable("pageNum")Integer pageNum, @PathVariable("pageSize")Integer pageSize){
-        System.err.println("回款分页");
+
         Map<String,Object> map = new HashMap<>();
         Page<Object> page = PageHelper.startPage(pageNum, pageSize);
         List<Map<Object,String>> hikuai = orderssService.hikuai(year);
@@ -107,7 +107,6 @@ public class BiaogeCorller {
     //合同分页
     @GetMapping("/hetong/{year}/{pageNum}/{pageSize}")
     public RestContent hetong(@PathVariable("year")String year, @PathVariable("pageNum")Integer pageNum, @PathVariable("pageSize")Integer pageSize){
-        System.err.println("合同分页");
         Map<String,Object> map = new HashMap<>();
         Page<Object> page = PageHelper.startPage(pageNum, pageSize);
         List<Map<Object,String>> hetong = orderssService.hetong(year);
@@ -116,11 +115,12 @@ public class BiaogeCorller {
         return returnContent.getContent(map,"数据获取成功","数据获取失败");
     }
 
+    public void df(List<Map<Object,String>> list){
+
+    }
     //销售漏斗分页
     @GetMapping("/xiaoshould/{year}/{pageNum}/{pageSize}")
     public RestContent xiaoshou(@PathVariable("year")String year, @PathVariable("pageNum")Integer pageNum, @PathVariable("pageSize")Integer pageSize){
-        System.err.println("销售漏斗分页年份"+year);
-        System.err.println("销售漏斗分页");
         Map<String,Object> map = new HashMap<>();
         Page<Object> page = PageHelper.startPage(pageNum, pageSize);
         List<Map<Object,String>> xiaoshould = orderssService.xiaoshould(year);
@@ -132,7 +132,7 @@ public class BiaogeCorller {
     //产品销售统计分页
     @GetMapping("/chanping/{year}/{pageNum}/{pageSize}")
     public RestContent chanping(@PathVariable("year")String year, @PathVariable("pageNum")Integer pageNum, @PathVariable("pageSize")Integer pageSize){
-        System.err.println("产品销售统计分页");
+
         Map<String,Object> map = new HashMap<>();
         Page<Object> page = PageHelper.startPage(pageNum, pageSize);
         List<Map<Object,String>> chanping = orderssService.chanping(year);

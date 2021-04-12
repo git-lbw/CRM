@@ -23,6 +23,17 @@ public class ImplContractService implements ContractService {
 
     @Override
     public boolean addContract(ContractVo contractVo) {
+        int i=10/0;
         return contractDao.addContract(contractVo);
+    }
+
+    @Override
+    public ContractVo getContractByContractId(Integer contractId) {
+        return contractDao.getContractByContractId(contractId);
+    }
+
+    @Override
+    public boolean updateContract(ContractVo contractVo) {
+        return contractDao.updateContract(contractVo);
     }
 }

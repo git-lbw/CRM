@@ -24,13 +24,19 @@
     </resultMap>
 
     <select id="getOrderAll" resultMap="OrdersResultMap">
-        select * from orders as od,staff as st,customer as cu where
-        od.staff_id=st.staff_id and od.cu_id=cu.cu_id
+        select * from orders as od left join staff as st on od.staff_id=st.staff_id
+        left join customer as cu on od.cu_id=cu.cu_id left join sales_leads as sa on
+        od.sales_leads_id=sa.sales_leads_id left join contract as co on od.contract_id=co.contract_id
     </select>
 
     <select id="getOrderBySalesLeadsId" resultMap="OrdersResultMap">
         select * from orders as od,staff as st,customer as cu where
         od.staff_id=st.staff_id and od.cu_id=cu.cu_id and od.sales_leads_id=#{salesLeadsId}
+    </select>
+
+    <select id="getOrderByContractId" resultMap="OrdersResultMap">
+        select * from orders as od,staff as st,customer as cu where
+        od.staff_id=st.staff_id and od.cu_id=cu.cu_id and od.contract_id=#{contractId}
     </select>
 
     <update id="updateOrder" parameterType="com.crm.entities.Orders">

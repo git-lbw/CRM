@@ -3,6 +3,7 @@ package com.crm.controller.sdn;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 import com.crm.entities.CommonResult;
+import com.crm.entities.Returns;
 import com.crm.service.sdn.ReturnsService;
 import com.crm.utils.RestContent;
 import com.crm.utils.ReturnContent;
@@ -14,6 +15,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.sql.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -28,16 +30,22 @@ public class ReturnsController {
     @Autowired
     ReturnsService returnsService;
 
-    //查询回款计划
-/*    @GetMapping("/findAllReturns")
-    public RestContent findAllReturns(Integer pageNum,Integer size,String contractName){
-        Map<String,Object> map = new HashMap<String, Object>();
-        Page<Object> page = PageHelper.startPage(pageNum,size);
-        List<ReturnsVo> returns = returnsService.findAllReturns(contractName);
-        map.put("rows",returns);
-        map.put("total",page.getTotal());
-        return returnContent.getContent(map,"查询成功！","查询失败！");
-    }*/
+    //添加回款计划
+    @GetMapping("/addReturns")
+    public RestContent addReturns(Returns returns){
+        returns.setRBeenp(0);
+        returns.setRBeenm(0);
+        returns.setRDate(new Date(System.currentTimeMillis()));
+        Boolean addReturns=returnsService.addReturns(returns);
+        return returnContent.getContent(addReturns,"添加成功！","添加失败！");
+    }
+
+    //根据合同id查询是否有该回款计划
+    @GetMapping("/findReturnsByContractId")
+    public RestContent findReturnsByContractId(Integer contractId){
+        List<Returns> returns = returnsService.findReturnsByContractId(contractId);
+        return returnContent.getContent(returns,"添加成功！","添加失败！");
+    };
 
     //查询回款计划
     @GetMapping("/findAllReturns")

@@ -2,6 +2,8 @@ package com.crm.entities;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.format.annotation.DateTimeFormat;
+
 import java.sql.Timestamp;
 
 @Data
@@ -14,7 +16,9 @@ public class Orders {
   private Integer staffId;
   private Integer cuId;
   private double orderMoney;
+  @DateTimeFormat(pattern = "yyyy-MM-dd")
   private java.util.Date startDate;
+  @DateTimeFormat(pattern = "yyyy-MM-dd")
   private java.util.Date fixtureDate;
   private Integer salesLeadsId;
   private Integer contractId;

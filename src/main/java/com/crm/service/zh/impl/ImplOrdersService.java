@@ -34,6 +34,11 @@ public class ImplOrdersService implements OrdersService {
         return ordersDao.updateOrder(orders);
     }
 
+    @Override
+    public List<OrdersVo> getOrderByContractId(Integer contractId) {
+        return ordersDao.getOrderByContractId(contractId);
+    }
+
     public List<OrdersVo> orderssall(String year){
         return ordersDao.orderssall(year);
     }

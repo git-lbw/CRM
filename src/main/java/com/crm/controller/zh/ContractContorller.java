@@ -25,8 +25,7 @@ public class ContractContorller {
     private ReturnContent returnContent;
     @Autowired
     private ImplContractService contractService;
-    @Autowired
-    private ImplOrdersService ordersService;
+
 
     @GetMapping("/getContractAll") //查询所有销售合同
     public RestContent getContractAll() {
@@ -42,6 +41,7 @@ public class ContractContorller {
         contractVo.setContractState("未开始");
         boolean addresult = contractService.addContract(contractVo);
         log.info("结果"+addresult);
+
         List<ContractVo> contractVos = contractService.getContractAll();
         return returnContent.getContent(contractVos,"数据获取成功","数据获取失败");
     }

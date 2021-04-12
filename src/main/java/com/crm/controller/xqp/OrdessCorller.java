@@ -28,11 +28,6 @@ public class OrdessCorller {
     @Autowired
     private OrdersService ordersService;
 
-    @Autowired
-    private Clue clue;
-
-
-
     @GetMapping("/getmonth/{year}")
     public RestContent getmonth(@PathVariable("year") String year){
         System.out.println(year);

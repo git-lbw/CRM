@@ -1,6 +1,7 @@
 package com.crm.service.sdn;
 
 import com.crm.dao.sdn.ReturnsDao;
+import com.crm.entities.Returns;
 import com.crm.vo.sdn.ReturnsVo;
 import com.crm.vo.sdn.TicketVo;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,10 +19,15 @@ public class ReturnsService {
     @Autowired
     ReturnsDao returnsDao;
 
-    //查询回款计划
- /*   public List<ReturnsVo> findAllReturns(String contractName){
-        return returnsDao.findAllReturns(contractName);
-    }*/
+    //添加回款计划
+    public Boolean addReturns(Returns returns){
+        return returnsDao.addReturns(returns);
+    }
+
+    //根据合同id查询是否有该回款计划
+    public List<Returns> findReturnsByContractId(Integer contractId){
+        return returnsDao.findReturnsByContractId(contractId);
+    };
 
     //查询回款计划
     public List<ReturnsVo> findAllReturns(ReturnsVo returnsVo){
